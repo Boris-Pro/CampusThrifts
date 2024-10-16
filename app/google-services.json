@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "913089159482",
+    "firebase_url": "https://campusthrifts-f60e0-default-rtdb.firebaseio.com",
+    "project_id": "campusthrifts-f60e0",
+    "storage_bucket": "campusthrifts-f60e0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913089159482:android:3af4bf876ac96f51fdf003",
+        "android_client_info": {
+          "package_name": "com.example.campusthrifts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWvk91QMapbcRUHML9vur1n-V4bgesvAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
