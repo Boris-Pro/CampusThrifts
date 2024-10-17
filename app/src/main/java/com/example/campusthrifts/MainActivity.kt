@@ -1,30 +1,29 @@
 package com.example.campusthrifts
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-//import androidx.compose.ui.semantics.text
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.google.firebase.auth.FirebaseAuth
+import com.example.campusthrifts.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var userEmailTextView: TextView
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        // Using ViewBinding to ensure views are bound correctly
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        userEmailTextView = findViewById(R.id.userEmailTextView)
-
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser != null) {
-            userEmailTextView.text = currentUser.email
-        } else {
-            userEmailTextView.text = "No user logged in"
-        }
-
+        // Wait for 2 seconds before transitioning to HomeActivity
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+            finish() // Ensure the splash screen activity does not remain in the back stack
+        }, 2000)
     }
 }
