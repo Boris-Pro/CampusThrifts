@@ -1,4 +1,11 @@
 <resources>
-    <string name="app_name">CampusThrifts</string>
-    <string name="password">Password</string>
+    <string name="back">Back</string>
+    <string name="user_avatar">User Avatar</string>
+    <string name="Smith_Mathew">Smith Mathew</string>
+    <string name="Online">Online</string>
+    <string name="type_message">Type a message</string>
+    <string name="avatar_description">User Avatar</string>
+    <string name="sample_message">Sample message</string>
+    <string name="message_time">12:30 PM</string>
 </resources>
+
