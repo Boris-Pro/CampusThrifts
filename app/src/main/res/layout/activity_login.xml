@@ -38,11 +38,15 @@
         android:layout_marginEnd="16dp" />
 
     <EditText
-        android:layout_width="0dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:id="@+id/loginEmail"
         android:hint="@string/email"
         android:padding="12dp"
+        android:drawableStart="@drawable/ic_email"
+        android:drawablePadding="8dp"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -51,12 +55,15 @@
         android:layout_marginEnd="16dp" />
 
     <EditText
-        android:layout_width="0dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:id="@+id/loginPassword"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:padding="12dp"
+        android:drawableStart="@drawable/ic_lock"
+        android:drawablePadding="8dp"
+        android:autofillHints="password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginEmail"
@@ -66,7 +73,7 @@
 
     <Button
         android:id="@+id/loginButton"
-        android:layout_width="0dp"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
@@ -75,7 +82,7 @@
         android:text="@string/log_in"
         app:layout_constraintBottom_toTopOf="@+id/sign_in_with"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword"
         app:layout_constraintVertical_bias="0.3" />
