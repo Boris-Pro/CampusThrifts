@@ -11,5 +11,7 @@
     <string name="already_have_account">Already have an account? Login here</string>
     <string name="do_not_have_account">Do not have an account? Sign up here</string>
     <string name="email">Email</string>
+    <string name="username">User Name</string>
+    <string name="student_id">Student Id</string>
     <string name="client_id">913089159482-au4jrja138iqb1b4pntvbq0rgpua80fa.apps.googleusercontent.com</string>
 </resources>
