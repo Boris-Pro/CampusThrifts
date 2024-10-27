@@ -13,7 +13,20 @@
           "package_name": "com.example.campusthrifts"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "913089159482-0595269ro47k0dt01vmhrpganctkdrut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.campusthrifts",
+            "certificate_hash": "87b920938c88ad52bb49ddb2165e2c5667460978"
+          }
+        },
+        {
+          "client_id": "913089159482-au4jrja138iqb1b4pntvbq0rgpua80fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAWvk91QMapbcRUHML9vur1n-V4bgesvAY"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "913089159482-au4jrja138iqb1b4pntvbq0rgpua80fa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
