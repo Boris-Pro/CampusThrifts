@@ -1,13 +1,11 @@
 package com.example.campusthrifts
 
-//import androidx.compose.ui.semantics.text
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.OnBackPressedDispatcher
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -17,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.campusthrifts.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,27 +36,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
 
+        // Fetch user information to display in the navigation header
+        val headerView = binding.navigationDrawer.getHeaderView(0)
+        val userNameTextView = headerView.findViewById<TextView>(R.id.userUserNameTextView)
+        val userEmailTextView = headerView.findViewById<TextView>(R.id.userEmailTextView)
+
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            val databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId)
+            databaseRef.get().addOnSuccessListener { snapshot ->
+                Log.d("MainActivity", "Snapshot data: ${snapshot.value}")
+                val user = snapshot.getValue(User::class.java)
+                if (user != null) {
+                    userNameTextView.text = user.username
+                    userEmailTextView.text = user.email
+                } else {
+                    userNameTextView.text = "Username"
+                    userEmailTextView.text = "user@example.com"
+                }
+            }.addOnFailureListener {
+                Toast.makeText(this, "Failed to load user data", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
         binding.bottomNavigation.background = null
-        binding.bottomNavigation.setOnItemSelectedListener{ item ->
-            when (item.itemId) {
-                R.id.bottom_home -> openFragment(HomeFragment())
-                R.id.bottom_search -> openFragment(SearchFragment())
-                R.id.bottom_cart -> openFragment(CartFragment())
-                R.id.bottom_profile -> openFragment(ProfileFragment())
-                R.id.bottom_chat -> openFragment(ChatFragment())
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+            val selectedFragment = when (item.itemId) {
+                R.id.bottom_home -> HomeFragment()
+                R.id.bottom_search -> SearchFragment()
+                R.id.bottom_cart -> CartFragment()
+                R.id.bottom_profile -> ProfileFragment()
+                R.id.bottom_chat -> ChatFragment()
+                else -> null
+            }
+            if (selectedFragment != null && currentFragment?.javaClass != selectedFragment.javaClass) {
+                openFragment(selectedFragment)
             }
             true
-
         }
 
         fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
-
-
-
-
-
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> openFragment(HomeFragment())
@@ -68,14 +91,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
             binding.drawerLayout.closeDrawer(GravityCompat.START)
@@ -85,8 +108,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun openFragment(fragment: Fragment) {
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
+        val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.addToBackStack(null) // Add fragment to back stack
         fragmentTransaction.commit()
     }
 }

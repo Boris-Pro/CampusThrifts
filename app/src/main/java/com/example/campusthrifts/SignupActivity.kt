@@ -29,18 +29,15 @@ class SignupActivity : AppCompatActivity() {
             val studentId = binding.signupStudentId.text.toString()
 
             if (email.isNotEmpty() && password.isNotEmpty() && username.isNotEmpty() && studentId.isNotEmpty()) {
-                // Create user in Firebase Authentication
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            // Get the user ID from Firebase Auth
                             val userId = firebaseAuth.currentUser?.uid
 
-                            // Create User object
-                            val user = User(username, studentId, email)
-
-                            // Save user data to Firebase Realtime Database
+                            // Proceed only if userId is not null
                             userId?.let {
+                                val user = User(uid = it, username = username, studentId = studentId, email = email)
+
                                 database.child(it).setValue(user)
                                     .addOnCompleteListener { dbTask ->
                                         if (dbTask.isSuccessful) {
@@ -57,13 +54,10 @@ class SignupActivity : AppCompatActivity() {
                         }
                     }
             } else {
-                Toast.makeText(
-                    this@SignupActivity,
-                    "Empty fields are not allowed",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@SignupActivity, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
             }
         }
+
 
         binding.loginRedirect.setOnClickListener {
             startActivity(Intent(this@SignupActivity, LoginActivity::class.java))

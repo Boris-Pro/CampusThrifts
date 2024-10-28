@@ -114,7 +114,7 @@ class LoginActivity : AppCompatActivity() {
         val username = user.displayName ?: "No Name"
 
         // Create a user object without student ID
-        val userData = User(username, "", userEmail) // Empty studentId
+        val userData = User(userId, username, "", userEmail) // Empty studentId
 
         // Check if the user already exists in the database
         database.child("users").child(userId).get().addOnSuccessListener { snapshot ->
