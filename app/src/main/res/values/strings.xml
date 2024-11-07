@@ -36,4 +36,18 @@
     <string name="hello_settings_fragment">Settings fragment</string>
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_about_fragment">About fragment</string>
+    <string name="profile_settings">Profile Settings</string>
+    <string name="back_button_desc">Back Button</string>
+    <string name="profile_image_desc">Profile Image</string>
+    <string name="camera_button_desc">Camera Button</string>
+    <string name="last_name_hint">Last Name</string>
+    <string name="first_name_hint">First Name</string>
+    <string name="email_hint">Email</string>
+    <string name="student_id_hint">Student ID #</string>
+    <string name="additional_field_hint">Additional Field</string>
+    <string name="gender_label">Gender</string>
+    <string name="male_option">Male</string>
+    <string name="female_option">Female</string>
+    <string name="other_option">Other</string>
+    <string name="save_changes">Save Changes</string>
 </resources>
