@@ -1,0 +1,19 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="36dp"
+    android:height="37dp"
+    android:viewportWidth="36"
+    android:viewportHeight="37">
+
+  <!-- Background Circle -->
+  <path
+      android:pathData="M18,34C26.8366,34 34,26.8366 34,18C34,9.16344 26.8366,2 18,2C9.16344,2 2,9.16344 2,18C2,26.8366 9.16344,34 18,34Z"
+      android:fillColor="#FFFFFF"/>
+
+  <!-- Arrow Path -->
+  <path
+      android:pathData="M20.9744,12L15,17.9691L20.9744,23.938"
+      android:strokeColor="#6B4D57"
+      android:strokeWidth="2"
+      android:strokeLineCap="round"
+      android:strokeLineJoin="round"/>
+</vector>
