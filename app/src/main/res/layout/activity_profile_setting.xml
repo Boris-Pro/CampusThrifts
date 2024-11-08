@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileSettingActivity">
+    tools:context="com.example.campusthrifts.ProfileSettingActivity">
 
+    <!-- Back Button (imageButton) -->
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="66dp"
@@ -21,6 +23,7 @@
         app:layout_constraintVertical_bias="0.018"
         app:srcCompat="@drawable/back_arrow" />
 
+    <!-- Title TextView -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -36,6 +39,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.076" />
 
+    <!-- Profile Image Display (imageButton2) -->
     <ImageButton
         android:id="@+id/imageButton2"
         android:layout_width="120dp"
@@ -52,12 +56,15 @@
         app:layout_constraintVertical_bias="0.187"
         tools:srcCompat="@drawable/profile_image" />
 
+    <!-- Camera Icon Button to Change Profile Image (imageButton3) -->
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="59dp"
         android:layout_height="51dp"
         android:background="@null"
         android:contentDescription="@string/camera_button_desc"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.585"
@@ -66,6 +73,18 @@
         app:layout_constraintVertical_bias="0.266"
         app:srcCompat="@drawable/camera_button" />
 
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Last Name Input -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText3"
         android:layout_width="170dp"
@@ -78,6 +97,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.379" />
 
+    <!-- First Name Input -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText"
         android:layout_width="170dp"
@@ -90,6 +110,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.379" />
 
+    <!-- Email Input -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText4"
         android:layout_width="360dp"
@@ -102,6 +123,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.482" />
 
+    <!-- Student ID Input -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText2"
         android:layout_width="360dp"
@@ -114,57 +136,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.591" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/gender_label"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.614"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
-
-    <!-- RadioGroup with Gender Options -->
-
-    <RadioGroup
-        android:id="@+id/genderRadioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.655"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822">
-
-        <RadioButton
-            android:id="@+id/radioMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/male_option" />
-
-        <RadioButton
-            android:id="@+id/radioFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/female_option" />
-
-        <RadioButton
-            android:id="@+id/radioOther"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/other_option" />
-    </RadioGroup>
-
+    <!-- Phone Number Input -->
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText5"
         android:layout_width="170dp"
         android:layout_height="60dp"
-        android:hint="@string/additional_field_hint"
+        android:hint="@string/phone_number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.062"
@@ -172,6 +149,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.692" />
 
+    <!-- Save Changes Button -->
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -182,6 +160,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.948" />
+        app:layout_constraintVertical_bias="0.861" />
+
+    <!-- Remove Image Button -->
+    <Button
+        android:id="@+id/removeImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#6B4D57"
+        android:text="@string/remove_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.792" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

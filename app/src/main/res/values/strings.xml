@@ -44,10 +44,10 @@
     <string name="first_name_hint">First Name</string>
     <string name="email_hint">Email</string>
     <string name="student_id_hint">Student ID #</string>
-    <string name="additional_field_hint">Additional Field</string>
-    <string name="gender_label">Gender</string>
-    <string name="male_option">Male</string>
-    <string name="female_option">Female</string>
-    <string name="other_option">Other</string>
     <string name="save_changes">Save Changes</string>
+    <string name="phone_number">Phone Number</string>"
+
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="remove_image">Remove Image</string>
+
 </resources>
