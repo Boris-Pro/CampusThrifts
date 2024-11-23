@@ -23,7 +23,6 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.IOException
 import java.util.UUID
 
@@ -53,7 +52,7 @@ class ProfileSettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile_setting) // Ensure the layout file name is correct
+        setContentView(R.layout.fragment_profile) // Ensure the layout file name is correct
 
         // Initialize UI elements
         backButton = findViewById(R.id.imageButton)
