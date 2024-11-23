@@ -50,4 +50,7 @@
     <string name="phone_number_hint">Phone Number</string>
     <string name="remove_image">Remove Image</string>
 
+    <string name="default_notification_channel_id">chat_messages</string>
+    <string name="msg_token_fmt">FCM Registration token: %1$s</string>
+
 </resources>

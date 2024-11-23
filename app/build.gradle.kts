@@ -42,16 +42,22 @@ android {
 }
 
 dependencies {
-
     // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
+    implementation(platform(libs.google.firebase.bom))
 
     // Firebase dependencies managed by BoM (no version specified)
-    implementation(libs.firebase.database)
-    implementation(libs.firebase.auth)
+    implementation(libs.firebase.database.ktx)
+    implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.firestore.ktx)
-    implementation(libs.firebase.storage)
     implementation(libs.firebase.messaging)
+
+    // Firebase UI Library
+    implementation(libs.firebase.ui.auth)
+    implementation(libs.firebase.ui.database)
+
+    // Google Sign In SDK
+    implementation(libs.play.services.auth)
 
     // Other dependencies
     implementation(libs.androidx.core.ktx)
@@ -59,7 +65,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.play.services.auth)
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)
@@ -69,10 +74,13 @@ dependencies {
 
     // Dependency for image cropping with uCrop
     implementation(libs.ucrop)
+    implementation(libs.firebase.dataconnect)
 
     // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.core.splashscreen)
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 }

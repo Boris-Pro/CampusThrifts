@@ -1,9 +1,13 @@
 [versions]
 agp = "8.5.0"
 coreSplashscreen = "1.0.1"
-credentials = "1.0.0" # Replace with actual latest version
+credentials = "1.3.0" # Replace with actual latest version
+firebaseBom = "33.5.1"
+firebaseBomVersion = "32.0.0"
+firebaseUiAuth = "8.0.2"
+firebaseUiDatabase = "8.0.2"
 googleid = "1.0.0"    # Replace with actual latest version
-kotlin = "1.8.10"     # Use a stable Kotlin version
+kotlin = "1.8.0"     # Use a stable Kotlin version
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.2.1"
@@ -21,12 +25,21 @@ coil = "2.4.0"
 ucrop = "2.2.8"
 firebaseMessaging = "24.0.3"         # Latest stable version
 googleServices = "4.4.2"
+firebaseDataconnect = "16.0.0-beta03"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
 androidx-credentials-play-services-auth = { module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx" }
+firebase-bom-v3351 = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-database-ktx = { module = "com.google.firebase:firebase-database-ktx" }
+firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx" }
+firebase-ui-auth = { module = "com.firebaseui:firebase-ui-auth", version.ref = "firebaseUiAuth" }
+firebase-ui-database = { module = "com.firebaseui:firebase-ui-database", version.ref = "firebaseUiDatabase" }
+firebase-ui-firestore = { module = "com.firebaseui:firebase-ui-firestore", version.ref = "firebaseUiAuth" }
+google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -43,6 +56,7 @@ firebase-storage = { group = "com.google.firebase", name = "firebase-storage", v
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 ucrop = { group = "com.github.yalantis", name = "ucrop", version.ref = "ucrop" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
+firebase-dataconnect = { group = "com.google.firebase", name = "firebase-dataconnect", version.ref = "firebaseDataconnect" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

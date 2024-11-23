@@ -36,7 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".ProfileSettingActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".CartActivity"
             android:exported="false" />
@@ -61,7 +61,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false">
+            android:exported="true">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
