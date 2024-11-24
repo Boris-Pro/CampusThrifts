@@ -12,3 +12,4 @@ namespace campusthrifts-f60e0, but the emulator is configured for campusthrifts-
 opt-out of single project mode add/set the singleProjectMode: false property in 
 the firebase.json emulators config. 
 04:27:16.553 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - campusthrifts-f60e0 successfully activated FBKV (SurveyIdle(0)) wait: 8ms, init: 0ms
+04:54:47.392 [NamespaceSystem-blocking-namespace-operation-dispatcher-14] INFO com.firebase.core.namespace.StateManager - Namespace campusthrifts-f60e0-default-rtdb status Active to Active
