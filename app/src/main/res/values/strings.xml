@@ -52,5 +52,6 @@
 
     <string name="default_notification_channel_id">chat_messages</string>
     <string name="msg_token_fmt">FCM Registration token: %1$s</string>
-
+    <string name="type_message_hint">Type a message...</string>
+    <string name="send_button">Send</string>
 </resources>

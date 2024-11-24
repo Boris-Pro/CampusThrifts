@@ -1,13 +1,13 @@
-I1123 04:23:48.999954   13872 load.go:37] Reloading schema and connectors...
-I1123 04:23:49.005500   13872 control.go:45] [engine.Service /emulator/CampusThrifts d291] UpdateSchema(): done sources: schema/schema.gql [1384B] 
-I1123 04:23:49.010122   13872 control.go:73] [engine.Service /emulator/CampusThrifts d291] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
-I1123 04:23:49.019901   13872 codegen.go:82] [connector "default" kotlinSdk] Generating sources into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
-I1123 04:23:49.020822   13872 collector.go:107] schema extensions wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema"
+I1124 04:26:36.854846   68729 load.go:37] Reloading schema and connectors...
+I1124 04:26:36.860549   68729 control.go:45] [engine.Service /emulator/CampusThrifts ac48] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+I1124 04:26:36.864838   68729 control.go:73] [engine.Service /emulator/CampusThrifts ac48] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+I1124 04:26:36.874856   68729 codegen.go:82] [connector "default" kotlinSdk] Generating sources into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
+I1124 04:26:36.875804   68729 collector.go:107] schema extensions wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema"
 Generated sources: prelude.gql [65151B] 
-I1123 04:23:49.021084   13872 collector.go:107] connector "default" kotlinSdk wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
-Generated sources: DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] DefaultConnectorEnums.kt [797B] 
-I1123 04:23:49.021099   13872 load.go:115] Finished reloading
-I1123 04:23:49.021195   13872 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
-I1123 04:23:49.021228   13872 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
-I1123 04:23:52.666297   13872 control.go:45] [engine.Service /emulator/CampusThrifts 697f] UpdateSchema(): done sources: schema/schema.gql [1384B] 
-I1123 04:23:52.666414   13872 control.go:73] [engine.Service /emulator/CampusThrifts 697f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+I1124 04:26:36.876306   68729 collector.go:107] connector "default" kotlinSdk wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
+Generated sources: DefaultConnectorEnums.kt [797B] DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] 
+I1124 04:26:36.876322   68729 load.go:115] Finished reloading
+I1124 04:26:36.876466   68729 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I1124 04:26:36.876505   68729 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
+I1124 04:26:40.564888   68729 control.go:45] [engine.Service /emulator/CampusThrifts 5d05] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+I1124 04:26:40.565061   68729 control.go:73] [engine.Service /emulator/CampusThrifts 5d05] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 

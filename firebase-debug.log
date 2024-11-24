@@ -1,246 +1,259 @@
-[debug] [2024-11-23T09:23:41.059Z] ----------------------------------------------------------------------
-[debug] [2024-11-23T09:23:41.061Z] Command:       /usr/local/bin/firebase /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start --project=demo-campusthrifts
-[debug] [2024-11-23T09:23:41.061Z] CLI Version:   13.27.0
-[debug] [2024-11-23T09:23:41.061Z] Platform:      linux
-[debug] [2024-11-23T09:23:41.061Z] Node Version:  v18.5.0
-[debug] [2024-11-23T09:23:41.062Z] Time:          Sat Nov 23 2024 04:23:41 GMT-0500 (Eastern Standard Time)
-[debug] [2024-11-23T09:23:41.062Z] ----------------------------------------------------------------------
+[debug] [2024-11-24T09:26:28.457Z] ----------------------------------------------------------------------
+[debug] [2024-11-24T09:26:28.458Z] Command:       /usr/local/bin/firebase /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2024-11-24T09:26:28.459Z] CLI Version:   13.27.0
+[debug] [2024-11-24T09:26:28.459Z] Platform:      linux
+[debug] [2024-11-24T09:26:28.459Z] Node Version:  v18.5.0
+[debug] [2024-11-24T09:26:28.459Z] Time:          Sun Nov 24 2024 04:26:28 GMT-0500 (Eastern Standard Time)
+[debug] [2024-11-24T09:26:28.459Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2024-11-23T09:23:41.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-11-23T09:23:41.131Z] > authorizing via signed-in user (kentonfelecia123@gmail.com)
-[debug] [2024-11-23T09:23:41.235Z] openjdk version "11.0.22" 2024-01-16
-
-[debug] [2024-11-23T09:23:41.235Z] OpenJDK Runtime Environment (build 11.0.22+7-post-Ubuntu-0ubuntu222.04.1)
+[debug] [2024-11-24T09:26:28.525Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-11-24T09:26:28.525Z] > authorizing via signed-in user (kentonfelecia123@gmail.com)
+[debug] [2024-11-24T09:26:28.563Z] openjdk version "11.0.22" 2024-01-16
+OpenJDK Runtime Environment (build 11.0.22+7-post-Ubuntu-0ubuntu222.04.1)
 OpenJDK 64-Bit Server VM (build 11.0.22+7-post-Ubuntu-0ubuntu222.04.1, mixed mode, sharing)
+[debug] [2024-11-24T09:26:28.563Z] 
 
-[debug] [2024-11-23T09:23:41.239Z] Parsed Java major version: 11
+[debug] [2024-11-24T09:26:28.574Z] Parsed Java major version: 11
 [info] i  emulators: Starting emulators: auth, functions, firestore, database, hosting, storage, dataconnect, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, database, hosting, storage, dataconnect, extensions"}}
-[info] i  emulators: Detected demo project ID "demo-campusthrifts", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail. {"metadata":{"emulator":{"name":"hub"},"message":"Detected demo project ID \"demo-campusthrifts\", emulated services will use a demo configuration and attempts to access non-emulated services for this project will fail."}}
-[debug] [2024-11-23T09:23:41.246Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.246Z] [dataconnect.postgres] postgres server for dataconnect only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.247Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2024-11-23T09:23:41.250Z] [hub] writing locator at /tmp/hub-demo-campusthrifts.json
-[debug] [2024-11-23T09:23:41.256Z] [Extensions] Started Extensions emulator, this is a noop.
-[debug] [2024-11-23T09:23:41.257Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.257Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.257Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2024-11-23T09:23:41.258Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
-[debug] [2024-11-23T09:23:41.260Z] defaultcredentials: writing to file /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json
-[debug] [2024-11-23T09:23:41.261Z] Setting GAC to /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json"}}
-[debug] [2024-11-23T09:23:41.270Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-11-23T09:23:41.270Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2024-11-23T09:23:41.270Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/home/felecia/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","demo-campusthrifts","--rules","/home/felecia/SWEN 3001 Projects/CampusThrifts/firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8080} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/home/felecia/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"demo-campusthrifts\",\"--rules\",\"/home/felecia/SWEN 3001 Projects/CampusThrifts/firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8080}"}}
+[debug] [2024-11-24T09:26:28.576Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:28.577Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:28.577Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/campusthrifts-f60e0 [none]
+[debug] [2024-11-24T09:26:28.828Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/campusthrifts-f60e0 200
+[debug] [2024-11-24T09:26:28.828Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/campusthrifts-f60e0 {"projectNumber":"913089159482","projectId":"campusthrifts-f60e0","lifecycleState":"ACTIVE","name":"CampusThrifts","labels":{"firebase":"enabled"},"createTime":"2024-10-16T04:41:20.662717Z"}
+[debug] [2024-11-24T09:26:28.836Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.836Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.836Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] [storage] Storage Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] [dataconnect.postgres] postgres server for dataconnect only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.837Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8081}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9151}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-11-24T09:26:28.841Z] [hub] writing locator at /tmp/hub-campusthrifts-f60e0.json
+[debug] [2024-11-24T09:26:28.845Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2024-11-24T09:26:28.846Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.846Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.846Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-11-24T09:26:28.846Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8081}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"storage":[{"address":"127.0.0.1","family":"IPv4","port":9199}],"dataconnect":[{"address":"127.0.0.1","family":"IPv4","port":9399},{"address":"::1","family":"IPv6","port":9399}],"dataconnect.postgres":[{"address":"127.0.0.1","family":"IPv4","port":5432}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9151}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, pubsub {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, pubsub\u001b[22m"}}
+[debug] [2024-11-24T09:26:28.857Z] defaultcredentials: writing to file /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json
+[debug] [2024-11-24T09:26:28.858Z] Setting GAC to /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /home/felecia/.config/firebase/kentonfelecia123_gmail_com_application_default_credentials.json"}}
+[debug] [2024-11-24T09:26:28.858Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:28.858Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:28.858Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/adminSdkConfig [none]
+[debug] [2024-11-24T09:26:29.443Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/adminSdkConfig 200
+[debug] [2024-11-24T09:26:29.444Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/adminSdkConfig {"projectId":"campusthrifts-f60e0","databaseURL":"https://campusthrifts-f60e0-default-rtdb.firebaseio.com","storageBucket":"campusthrifts-f60e0.appspot.com","locationId":"us-central"}
+[debug] [2024-11-24T09:26:29.468Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-11-24T09:26:29.469Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2024-11-24T09:26:29.469Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/home/felecia/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",8081,"--websocket_port",9151,"--project_id","campusthrifts-f60e0","--rules","/home/felecia/SWEN 3001 Projects/CampusThrifts/firestore.rules","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":8081} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/home/felecia/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",8081,\"--websocket_port\",9151,\"--project_id\",\"campusthrifts-f60e0\",\"--rules\",\"/home/felecia/SWEN 3001 Projects/CampusThrifts/firestore.rules\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":8081}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
-[debug] [2024-11-23T09:23:42.267Z] Nov 23, 2024 4:23:42 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
-INFO: Started WebSocket server on ws://127.0.0.1:9150
- {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 23, 2024 4:23:42 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
-[debug] [2024-11-23T09:23:42.327Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
-[debug] [2024-11-23T09:23:42.327Z] 127.0.0.1:8080
+[debug] [2024-11-24T09:26:30.465Z] Nov 24, 2024 4:26:30 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9151
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 24, 2024 4:26:30 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9151\n"}}
+[debug] [2024-11-24T09:26:30.512Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2024-11-24T09:26:30.512Z] 127.0.0.1:8081
 If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
 
-   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8081
 
 If you are running a Firestore in Datastore Mode project, run:
 
-   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:8081
 
 Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
 Dev App Server is now running.
 
- {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nIf you are running a Firestore in Datastore Mode project, run:\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\nDev App Server is now running.\n\n"}}
-[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
-[debug] [2024-11-23T09:23:42.490Z] Checked if tokens are valid: false, expires at: 1732353071851
-[debug] [2024-11-23T09:23:42.490Z] Checked if tokens are valid: false, expires at: 1732353071851
-[debug] [2024-11-23T09:23:42.490Z] > refreshing access token with scopes: []
-[debug] [2024-11-23T09:23:42.492Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2024-11-23T09:23:42.492Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2024-11-23T09:23:42.667Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2024-11-23T09:23:42.667Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2024-11-23T09:23:42.684Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts [none]
-[debug] [2024-11-23T09:23:43.110Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts 403
-[debug] [2024-11-23T09:23:43.110Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2024-11-23T09:23:43.110Z] Request to https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts had HTTP Error: 403, The caller does not have permission
-[debug] [2024-11-23T09:23:43.111Z] Failed to retrieve default database instance: {"name":"FirebaseError","children":[],"exit":2,"message":"Failed to get Firebase project demo-campusthrifts. Please make sure the project exists and your account has permission to access it.","original":{"name":"FirebaseError","children":[],"context":{"body":{"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}},"response":{"statusCode":403}},"exit":1,"message":"Request to https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts had HTTP Error: 403, The caller does not have permission","status":403},"status":500} {"metadata":{"emulator":{"name":"database"},"message":"Failed to retrieve default database instance: {\"name\":\"FirebaseError\",\"children\":[],\"exit\":2,\"message\":\"Failed to get Firebase project demo-campusthrifts. Please make sure the project exists and your account has permission to access it.\",\"original\":{\"name\":\"FirebaseError\",\"children\":[],\"context\":{\"body\":{\"error\":{\"code\":403,\"message\":\"The caller does not have permission\",\"status\":\"PERMISSION_DENIED\"}},\"response\":{\"statusCode\":403}},\"exit\":1,\"message\":\"Request to https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts had HTTP Error: 403, The caller does not have permission\",\"status\":403},\"status\":500}"}}
-[debug] [2024-11-23T09:23:43.111Z] database rules config:  [{"instance":"demo-campusthrifts-default-rtdb","rules":"/home/felecia/SWEN 3001 Projects/CampusThrifts/database.rules.json"}]
-[debug] [2024-11-23T09:23:43.114Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
-[debug] [2024-11-23T09:23:43.114Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-11-23T09:23:43.114Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
-[debug] [2024-11-23T09:23:43.114Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning","--functions_emulator_host","127.0.0.1","--functions_emulator_port",5001],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\",\"--functions_emulator_host\",\"127.0.0.1\",\"--functions_emulator_port\",5001],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8081\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8081\n\nIf you are running a Firestore in Datastore Mode project, run:\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:8081\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9151. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9151."}}
+[debug] [2024-11-24T09:26:30.689Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:30.689Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:30.689Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 [none]
+[debug] [2024-11-24T09:26:30.990Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 200
+[debug] [2024-11-24T09:26:30.990Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 {"projectId":"campusthrifts-f60e0","projectNumber":"913089159482","displayName":"CampusThrifts","name":"projects/campusthrifts-f60e0","resources":{"hostingSite":"campusthrifts-f60e0","realtimeDatabaseInstance":"campusthrifts-f60e0-default-rtdb","storageBucket":"campusthrifts-f60e0.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_7401d91a-1f1e-4a1b-b614-a343091c9ab5"}
+[debug] [2024-11-24T09:26:30.991Z] database rules config:  [{"instance":"campusthrifts-f60e0-default-rtdb","rules":"/home/felecia/SWEN 3001 Projects/CampusThrifts/database.rules.json"}]
+[debug] [2024-11-24T09:26:31.001Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2024-11-24T09:26:31.002Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-11-24T09:26:31.002Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2024-11-24T09:26:31.002Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning","--functions_emulator_host","127.0.0.1","--functions_emulator_port",5001],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false,"port":9000} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\",\"--functions_emulator_host\",\"127.0.0.1\",\"--functions_emulator_port\",5001],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9000}"}}
 [info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
-[debug] [2024-11-23T09:23:43.584Z] WARNING: An illegal reflective access operation has occurred
+[debug] [2024-11-24T09:26:31.464Z] WARNING: An illegal reflective access operation has occurred
 WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar) to field sun.nio.ch.SelectorImpl.selectedKeys
 WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
 WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
 WARNING: All illegal access operations will be denied in a future release
  {"metadata":{"emulator":{"name":"database"},"message":"WARNING: An illegal reflective access operation has occurred\nWARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/home/felecia/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar) to field sun.nio.ch.SelectorImpl.selectedKeys\nWARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil\nWARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations\nWARNING: All illegal access operations will be denied in a future release\n"}}
-[debug] [2024-11-23T09:23:44.019Z] 04:23:44.018 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
- {"metadata":{"emulator":{"name":"database"},"message":"04:23:44.018 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
-[debug] [2024-11-23T09:23:44.145Z] 04:23:44.145 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
- {"metadata":{"emulator":{"name":"database"},"message":"04:23:44.145 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
-[debug] [2024-11-23T09:23:48.976Z] I1123 04:23:48.970152   13858 control.go:45] [engine.Service /emulator/CampusThrifts 1f33] UpdateSchema(): done sources: schema/schema.gql [1384B] 
-I1123 04:23:48.974414   13858 control.go:73] [engine.Service /emulator/CampusThrifts 1f33] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:48.970152   13858 control.go:45] [engine.Service /emulator/CampusThrifts 1f33] UpdateSchema(): done sources: schema/schema.gql [1384B] \nI1123 04:23:48.974414   13858 control.go:73] [engine.Service /emulator/CampusThrifts 1f33] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
-[debug] [2024-11-23T09:23:48.976Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2024-11-23T09:23:48.976Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2024-11-23T09:23:48.976Z] Starting Data Connect Emulator with command {"binary":"/home/felecia/.cache/firebase/emulators/dataconnect-emulator-1.7.3","args":["--logtostderr","-v=2","dev","--listen=127.0.0.1:9399,[::1]:9399","--config_dir=/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/home/felecia/.cache/firebase/emulators/dataconnect-emulator-1.7.3\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=127.0.0.1:9399,[::1]:9399\",\"--config_dir=/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
+[debug] [2024-11-24T09:26:31.901Z] 04:26:31.900 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"04:26:31.900 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2024-11-24T09:26:32.028Z] 04:26:32.027 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"04:26:32.027 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2024-11-24T09:26:36.830Z] I1124 04:26:36.824060   68715 control.go:45] [engine.Service /emulator/CampusThrifts 2f5f] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+I1124 04:26:36.828549   68715 control.go:73] [engine.Service /emulator/CampusThrifts 2f5f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.824060   68715 control.go:45] [engine.Service /emulator/CampusThrifts 2f5f] UpdateSchema(): done sources: schema/schema.gql [1384B] \nI1124 04:26:36.828549   68715 control.go:73] [engine.Service /emulator/CampusThrifts 2f5f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
+[debug] [2024-11-24T09:26:36.830Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-11-24T09:26:36.830Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"dataconnect"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-11-24T09:26:36.830Z] Starting Data Connect Emulator with command {"binary":"/home/felecia/.cache/firebase/emulators/dataconnect-emulator-1.7.3","args":["--logtostderr","-v=2","dev","--listen=127.0.0.1:9399,[::1]:9399","--config_dir=/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect","--enable_output_schema_extensions=true","--enable_output_generated_sdk=true"],"optionalArgs":["listen","config_dir","enable_output_schema_extensions","enable_output_generated_sdk"],"joinArgs":true,"shell":false,"port":9399} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Starting Data Connect Emulator with command {\"binary\":\"/home/felecia/.cache/firebase/emulators/dataconnect-emulator-1.7.3\",\"args\":[\"--logtostderr\",\"-v=2\",\"dev\",\"--listen=127.0.0.1:9399,[::1]:9399\",\"--config_dir=/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect\",\"--enable_output_schema_extensions=true\",\"--enable_output_generated_sdk=true\"],\"optionalArgs\":[\"listen\",\"config_dir\",\"enable_output_schema_extensions\",\"enable_output_generated_sdk\"],\"joinArgs\":true,\"shell\":false,\"port\":9399}"}}
 [info] i  dataconnect: Data Connect Emulator logging to dataconnect-debug.log {"metadata":{"emulator":{"name":"dataconnect"},"message":"Data Connect Emulator logging to \u001b[1mdataconnect-debug.log\u001b[22m"}}
-[debug] [2024-11-23T09:23:49.001Z] I1123 04:23:48.999954   13872 load.go:37] Reloading schema and connectors...
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:48.999954   13872 load.go:37] Reloading schema and connectors...\n"}}
+[debug] [2024-11-24T09:26:36.856Z] I1124 04:26:36.854846   68729 load.go:37] Reloading schema and connectors...
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.854846   68729 load.go:37] Reloading schema and connectors...\n"}}
 [info] i  dataconnect: Started up Postgres server, listening on {"address":"127.0.0.1","family":"IPv4","port":5432} {"metadata":{"emulator":{"name":"dataconnect"},"message":"Started up Postgres server, listening on {\"address\":\"127.0.0.1\",\"family\":\"IPv4\",\"port\":5432}"}}
-[debug] [2024-11-23T09:23:49.003Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
-[debug] [2024-11-23T09:23:49.004Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
-[debug] [2024-11-23T09:23:49.004Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"CampusThrifts","maxOpenConnections":1}
-[debug] [2024-11-23T09:23:49.005Z] *** [apiv2] error from fetch(http://127.0.0.1:9399/emulator/configure, {"headers":{},"method":"POST","body":"{\"connectionString\":\"postgres://127.0.0.1:5432/fdcdb?sslmode=disable\",\"database\":\"fdcdb\",\"serviceId\":\"CampusThrifts\",\"maxOpenConnections\":1}"}): FetchError: request to http://127.0.0.1:9399/emulator/configure failed, reason: connect ECONNREFUSED 127.0.0.1:9399
-[debug] [2024-11-23T09:23:49.005Z] [Data Connect] Retrying connectToPostgress call (1 of 3 attempts): FirebaseError: Data Connect emulator: undefined
-[debug] [2024-11-23T09:23:49.005Z] I1123 04:23:49.005500   13872 control.go:45] [engine.Service /emulator/CampusThrifts d291] UpdateSchema(): done sources: schema/schema.gql [1384B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.005500   13872 control.go:45] [engine.Service /emulator/CampusThrifts d291] UpdateSchema(): done sources: schema/schema.gql [1384B] \n"}}
-[debug] [2024-11-23T09:23:49.010Z] I1123 04:23:49.010122   13872 control.go:73] [engine.Service /emulator/CampusThrifts d291] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.010122   13872 control.go:73] [engine.Service /emulator/CampusThrifts d291] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
-[debug] [2024-11-23T09:23:49.019Z] I1123 04:23:49.019901   13872 codegen.go:82] [connector "default" kotlinSdk] Generating sources into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.019901   13872 codegen.go:82] [connector \"default\" kotlinSdk] Generating sources into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default\"\n"}}
-[debug] [2024-11-23T09:23:49.020Z] I1123 04:23:49.020822   13872 collector.go:107] schema extensions wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema"
+[debug] [2024-11-24T09:26:36.858Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
+[debug] [2024-11-24T09:26:36.859Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2024-11-24T09:26:36.859Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"CampusThrifts","maxOpenConnections":1}
+[debug] [2024-11-24T09:26:36.860Z] *** [apiv2] error from fetch(http://127.0.0.1:9399/emulator/configure, {"headers":{},"method":"POST","body":"{\"connectionString\":\"postgres://127.0.0.1:5432/fdcdb?sslmode=disable\",\"database\":\"fdcdb\",\"serviceId\":\"CampusThrifts\",\"maxOpenConnections\":1}"}): FetchError: request to http://127.0.0.1:9399/emulator/configure failed, reason: connect ECONNREFUSED 127.0.0.1:9399
+[debug] [2024-11-24T09:26:36.860Z] [Data Connect] Retrying connectToPostgress call (1 of 3 attempts): FirebaseError: Data Connect emulator: undefined
+[debug] [2024-11-24T09:26:36.860Z] I1124 04:26:36.860549   68729 control.go:45] [engine.Service /emulator/CampusThrifts ac48] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.860549   68729 control.go:45] [engine.Service /emulator/CampusThrifts ac48] UpdateSchema(): done sources: schema/schema.gql [1384B] \n"}}
+[debug] [2024-11-24T09:26:36.864Z] I1124 04:26:36.864838   68729 control.go:73] [engine.Service /emulator/CampusThrifts ac48] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.864838   68729 control.go:73] [engine.Service /emulator/CampusThrifts ac48] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
+[debug] [2024-11-24T09:26:36.874Z] I1124 04:26:36.874856   68729 codegen.go:82] [connector "default" kotlinSdk] Generating sources into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.874856   68729 codegen.go:82] [connector \"default\" kotlinSdk] Generating sources into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default\"\n"}}
+[debug] [2024-11-24T09:26:36.875Z] I1124 04:26:36.875804   68729 collector.go:107] schema extensions wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema"
 Generated sources: prelude.gql [65151B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.020822   13872 collector.go:107] schema extensions wrote into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [65151B] \n"}}
-[debug] [2024-11-23T09:23:49.021Z] I1123 04:23:49.021084   13872 collector.go:107] connector "default" kotlinSdk wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
-Generated sources: DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] DefaultConnectorEnums.kt [797B] 
-I1123 04:23:49.021099   13872 load.go:115] Finished reloading
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.021084   13872 collector.go:107] connector \"default\" kotlinSdk wrote into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default\"\nGenerated sources: DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] DefaultConnectorEnums.kt [797B] \nI1123 04:23:49.021099   13872 load.go:115] Finished reloading\n"}}
-[debug] [2024-11-23T09:23:49.021Z] I1123 04:23:49.021195   13872 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
-I1123 04:23:49.021228   13872 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:49.021195   13872 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399\nI1123 04:23:49.021228   13872 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399\n"}}
-[debug] [2024-11-23T09:23:51.006Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
-[debug] [2024-11-23T09:23:51.007Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
-[debug] [2024-11-23T09:23:51.007Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"CampusThrifts","maxOpenConnections":1}
-[debug] [2024-11-23T09:23:51.013Z] Frontend message 
-[debug] [2024-11-23T09:23:51.015Z] Backend message AuthenticationResponse
-[debug] [2024-11-23T09:23:51.016Z] Backend message ParameterStatus
-[debug] [2024-11-23T09:23:51.016Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:51.017Z] Frontend message Query
-[debug] [2024-11-23T09:23:51.945Z] Backend message EmptyQuery
-[debug] [2024-11-23T09:23:51.945Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:51.995Z] Frontend message Query
-[debug] [2024-11-23T09:23:51.998Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:51.999Z] Backend message DataRow
-[debug] [2024-11-23T09:23:51.999Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.000Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.043Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.044Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.044Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.044Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.045Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.045Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.045Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.087Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.088Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.088Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.088Z] Backend message DataRow
-[debug] [2024-11-23T09:23:52.089Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.089Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.089Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.130Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.131Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.131Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.132Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.132Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.132Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.132Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.175Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.176Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.176Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.176Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.177Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.177Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.219Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.220Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.220Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.221Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.221Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.221Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.221Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.263Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.268Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.268Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.268Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.268Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.269Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.310Z] Frontend message Query
-[debug] [2024-11-23T09:23:52.311Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.311Z] Backend message DataRow
-[debug] [2024-11-23T09:23:52.311Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.311Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.355Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.356Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.356Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.356Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.356Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.356Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.356Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.399Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.400Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.400Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.400Z] Backend message DataRow
-[debug] [2024-11-23T09:23:52.400Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.401Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.401Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.442Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.443Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.443Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.443Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.443Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.443Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.444Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.486Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.487Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.487Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.487Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.488Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.488Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.530Z] Frontend message Parse
-[debug] [2024-11-23T09:23:52.531Z] Backend message ParseComplete
-[debug] [2024-11-23T09:23:52.531Z] Frontend message Describe
-[debug] [2024-11-23T09:23:52.531Z] Backend message ParameterDescriptionMessage
-[debug] [2024-11-23T09:23:52.531Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.531Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.532Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.574Z] Frontend message Bind
-[debug] [2024-11-23T09:23:52.578Z] Backend message BindComplete
-[debug] [2024-11-23T09:23:52.578Z] Frontend message Execute
-[debug] [2024-11-23T09:23:52.578Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.578Z] Frontend message Sync
-[debug] [2024-11-23T09:23:52.579Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.622Z] Frontend message Query
-[debug] [2024-11-23T09:23:52.623Z] Backend message RowDescriptionMessage
-[debug] [2024-11-23T09:23:52.623Z] Backend message DataRow
-[debug] [2024-11-23T09:23:52.623Z] Backend message CommandComplete
-[debug] [2024-11-23T09:23:52.623Z] Backend message ReadyForQuery
-[debug] [2024-11-23T09:23:52.666Z] I1123 04:23:52.666297   13872 control.go:45] [engine.Service /emulator/CampusThrifts 697f] UpdateSchema(): done sources: schema/schema.gql [1384B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:52.666297   13872 control.go:45] [engine.Service /emulator/CampusThrifts 697f] UpdateSchema(): done sources: schema/schema.gql [1384B] \n"}}
-[debug] [2024-11-23T09:23:52.666Z] I1123 04:23:52.666414   13872 control.go:73] [engine.Service /emulator/CampusThrifts 697f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
- {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1123 04:23:52.666414   13872 control.go:73] [engine.Service /emulator/CampusThrifts 697f] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
-[debug] [2024-11-23T09:23:52.669Z] <<< [apiv2][status] POST http://127.0.0.1:9399/emulator/configure 200
-[debug] [2024-11-23T09:23:52.669Z] <<< [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {}
-[debug] [2024-11-23T09:23:52.669Z] [Data Connect] Successfully connected to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}
-[debug] [2024-11-23T09:23:52.684Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
-[debug] [2024-11-23T09:23:53.288Z] Temp file directory for storage emulator: /tmp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: /tmp/firebase/storage/blobs"}}
-[debug] [2024-11-23T09:23:53.294Z] Checked if tokens are valid: true, expires at: 1732357421667
-[debug] [2024-11-23T09:23:53.294Z] Checked if tokens are valid: true, expires at: 1732357421667
-[debug] [2024-11-23T09:23:53.294Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts [none]
-[debug] [2024-11-23T09:23:53.841Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts 403
-[debug] [2024-11-23T09:23:53.842Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
-[debug] [2024-11-23T09:23:53.842Z] Request to https://firebase.googleapis.com/v1beta1/projects/demo-campusthrifts had HTTP Error: 403, The caller does not have permission
-[info] i  hosting[demo-campusthrifts]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
-[info] ✔  hosting[demo-campusthrifts]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
-[debug] [2024-11-23T09:23:53.869Z] [Extensions] Connecting Extensions emulator, this is a noop.
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.875804   68729 collector.go:107] schema extensions wrote into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/dataconnect/.dataconnect/schema\"\nGenerated sources: prelude.gql [65151B] \n"}}
+[debug] [2024-11-24T09:26:36.876Z] I1124 04:26:36.876306   68729 collector.go:107] connector "default" kotlinSdk wrote into "/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default"
+Generated sources: DefaultConnectorEnums.kt [797B] DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.876306   68729 collector.go:107] connector \"default\" kotlinSdk wrote into \"/home/felecia/SWEN 3001 Projects/CampusThrifts/app/src/main/java/connectors/default\"\nGenerated sources: DefaultConnectorEnums.kt [797B] DefaultConnector.kt [8308B] DefaultConnectorKeys.kt [799B] \n"}}
+[debug] [2024-11-24T09:26:36.876Z] I1124 04:26:36.876322   68729 load.go:115] Finished reloading
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.876322   68729 load.go:115] Finished reloading\n"}}
+[debug] [2024-11-24T09:26:36.876Z] I1124 04:26:36.876466   68729 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399
+I1124 04:26:36.876505   68729 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:36.876466   68729 dev.go:95] Listening on address (HTTP + gRPC): 127.0.0.1:9399\nI1124 04:26:36.876505   68729 dev.go:95] Listening on address (HTTP + gRPC): [::1]:9399\n"}}
+[debug] [2024-11-24T09:26:38.860Z] [Data Connect] Connecting to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}...
+[debug] [2024-11-24T09:26:38.861Z] >>> [apiv2][query] POST http://127.0.0.1:9399/emulator/configure [none]
+[debug] [2024-11-24T09:26:38.861Z] >>> [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {"connectionString":"postgres://127.0.0.1:5432/fdcdb?sslmode=disable","database":"fdcdb","serviceId":"CampusThrifts","maxOpenConnections":1}
+[debug] [2024-11-24T09:26:38.867Z] Frontend message 
+[debug] [2024-11-24T09:26:38.869Z] Backend message AuthenticationResponse
+[debug] [2024-11-24T09:26:38.870Z] Backend message ParameterStatus
+[debug] [2024-11-24T09:26:38.870Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:38.870Z] Frontend message Query
+[debug] [2024-11-24T09:26:39.832Z] Backend message EmptyQuery
+[debug] [2024-11-24T09:26:39.833Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:39.884Z] Frontend message Query
+[debug] [2024-11-24T09:26:39.887Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:39.888Z] Backend message DataRow
+[debug] [2024-11-24T09:26:39.889Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:39.889Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:39.929Z] Frontend message Parse
+[debug] [2024-11-24T09:26:39.930Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:39.930Z] Frontend message Describe
+[debug] [2024-11-24T09:26:39.930Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:39.931Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:39.931Z] Frontend message Sync
+[debug] [2024-11-24T09:26:39.931Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:39.973Z] Frontend message Bind
+[debug] [2024-11-24T09:26:39.973Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:39.974Z] Frontend message Execute
+[debug] [2024-11-24T09:26:39.974Z] Backend message DataRow
+[debug] [2024-11-24T09:26:39.974Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:39.975Z] Frontend message Sync
+[debug] [2024-11-24T09:26:39.975Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.017Z] Frontend message Parse
+[debug] [2024-11-24T09:26:40.018Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:40.018Z] Frontend message Describe
+[debug] [2024-11-24T09:26:40.018Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:40.018Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.018Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.019Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.061Z] Frontend message Bind
+[debug] [2024-11-24T09:26:40.062Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:40.062Z] Frontend message Execute
+[debug] [2024-11-24T09:26:40.062Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.062Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.062Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.105Z] Frontend message Parse
+[debug] [2024-11-24T09:26:40.106Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:40.106Z] Frontend message Describe
+[debug] [2024-11-24T09:26:40.107Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:40.107Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.107Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.107Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.149Z] Frontend message Bind
+[debug] [2024-11-24T09:26:40.153Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:40.154Z] Frontend message Execute
+[debug] [2024-11-24T09:26:40.154Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.154Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.154Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.197Z] Frontend message Query
+[debug] [2024-11-24T09:26:40.197Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.198Z] Backend message DataRow
+[debug] [2024-11-24T09:26:40.198Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.198Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.241Z] Frontend message Parse
+[debug] [2024-11-24T09:26:40.241Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:40.241Z] Frontend message Describe
+[debug] [2024-11-24T09:26:40.242Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:40.242Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.242Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.242Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.285Z] Frontend message Bind
+[debug] [2024-11-24T09:26:40.285Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:40.286Z] Frontend message Execute
+[debug] [2024-11-24T09:26:40.286Z] Backend message DataRow
+[debug] [2024-11-24T09:26:40.286Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.286Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.286Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.333Z] Frontend message Parse
+[debug] [2024-11-24T09:26:40.333Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:40.334Z] Frontend message Describe
+[debug] [2024-11-24T09:26:40.334Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:40.334Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.334Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.334Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.381Z] Frontend message Bind
+[debug] [2024-11-24T09:26:40.382Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:40.382Z] Frontend message Execute
+[debug] [2024-11-24T09:26:40.382Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.382Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.382Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.429Z] Frontend message Parse
+[debug] [2024-11-24T09:26:40.430Z] Backend message ParseComplete
+[debug] [2024-11-24T09:26:40.430Z] Frontend message Describe
+[debug] [2024-11-24T09:26:40.430Z] Backend message ParameterDescriptionMessage
+[debug] [2024-11-24T09:26:40.430Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.430Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.430Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.477Z] Frontend message Bind
+[debug] [2024-11-24T09:26:40.480Z] Backend message BindComplete
+[debug] [2024-11-24T09:26:40.480Z] Frontend message Execute
+[debug] [2024-11-24T09:26:40.481Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.481Z] Frontend message Sync
+[debug] [2024-11-24T09:26:40.481Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.521Z] Frontend message Query
+[debug] [2024-11-24T09:26:40.521Z] Backend message RowDescriptionMessage
+[debug] [2024-11-24T09:26:40.522Z] Backend message DataRow
+[debug] [2024-11-24T09:26:40.522Z] Backend message CommandComplete
+[debug] [2024-11-24T09:26:40.522Z] Backend message ReadyForQuery
+[debug] [2024-11-24T09:26:40.565Z] I1124 04:26:40.564888   68729 control.go:45] [engine.Service /emulator/CampusThrifts 5d05] UpdateSchema(): done sources: schema/schema.gql [1384B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:40.564888   68729 control.go:45] [engine.Service /emulator/CampusThrifts 5d05] UpdateSchema(): done sources: schema/schema.gql [1384B] \n"}}
+[debug] [2024-11-24T09:26:40.565Z] I1124 04:26:40.565061   68729 control.go:73] [engine.Service /emulator/CampusThrifts 5d05] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] 
+ {"metadata":{"emulator":{"name":"dataconnect"},"message":"I1124 04:26:40.565061   68729 control.go:73] [engine.Service /emulator/CampusThrifts 5d05] UpdateConnector(default): done sources: connector/mutations.gql [1163B] connector/queries.gql [1855B] \n"}}
+[debug] [2024-11-24T09:26:40.568Z] <<< [apiv2][status] POST http://127.0.0.1:9399/emulator/configure 200
+[debug] [2024-11-24T09:26:40.568Z] <<< [apiv2][body] POST http://127.0.0.1:9399/emulator/configure {}
+[debug] [2024-11-24T09:26:40.569Z] [Data Connect] Successfully connected to postgres://127.0.0.1:5432/fdcdb?sslmode=disable}
+[debug] [2024-11-24T09:26:40.575Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"storage"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-11-24T09:26:41.197Z] Temp file directory for storage emulator: /tmp/firebase/storage/blobs {"metadata":{"emulator":{"name":"storage"},"message":"Temp file directory for storage emulator: /tmp/firebase/storage/blobs"}}
+[debug] [2024-11-24T09:26:41.203Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:41.203Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:41.203Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/campusthrifts-f60e0/sites 
+[debug] [2024-11-24T09:26:42.018Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/campusthrifts-f60e0/sites 200
+[debug] [2024-11-24T09:26:42.018Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/campusthrifts-f60e0/sites {"sites":[{"name":"projects/campusthrifts-f60e0/sites/campusthrifts-f60e0","defaultUrl":"https://campusthrifts-f60e0.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-11-24T09:26:42.018Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:42.019Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:42.019Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/webApps/-/config [none]
+[debug] [2024-11-24T09:26:42.637Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/webApps/-/config 200
+[debug] [2024-11-24T09:26:42.637Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0/webApps/-/config {"projectId":"campusthrifts-f60e0","databaseURL":"https://campusthrifts-f60e0-default-rtdb.firebaseio.com","storageBucket":"campusthrifts-f60e0.appspot.com","locationId":"us-central","apiKey":"AIzaSyCMxVDGg2zkD9MrxK7SYdPCYm9jNlNnME0","authDomain":"campusthrifts-f60e0.firebaseapp.com","messagingSenderId":"913089159482"}
+[debug] [2024-11-24T09:26:42.642Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:42.642Z] Checked if tokens are valid: true, expires at: 1732443292950
+[debug] [2024-11-24T09:26:42.643Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 [none]
+[debug] [2024-11-24T09:26:42.946Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 200
+[debug] [2024-11-24T09:26:42.946Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/campusthrifts-f60e0 {"projectId":"campusthrifts-f60e0","projectNumber":"913089159482","displayName":"CampusThrifts","name":"projects/campusthrifts-f60e0","resources":{"hostingSite":"campusthrifts-f60e0","realtimeDatabaseInstance":"campusthrifts-f60e0-default-rtdb","storageBucket":"campusthrifts-f60e0.appspot.com","locationId":"us-central"},"state":"ACTIVE","etag":"1_7401d91a-1f1e-4a1b-b614-a343091c9ab5"}
+[info] i  hosting[campusthrifts-f60e0]: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] ✔  hosting[campusthrifts-f60e0]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2024-11-24T09:26:42.973Z] [Extensions] Connecting Extensions emulator, this is a noop.
 [info] i  functions: Watching "/home/felecia/SWEN 3001 Projects/CampusThrifts/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/home/felecia/SWEN 3001 Projects/CampusThrifts/functions\" for Cloud Functions..."}}
-[debug] [2024-11-23T09:23:53.874Z] Validating nodejs source
+[debug] [2024-11-24T09:26:42.978Z] Validating nodejs source
 [warn] ⚠  functions: Couldn't find firebase-functions package in your source code. Have you run 'npm install'? 
-[debug] [2024-11-23T09:23:53.875Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
+[debug] [2024-11-24T09:26:42.979Z] getFunctionsSDKVersion encountered error: Cannot find module 'firebase-functions'
 Require stack:
 - /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js
 - /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js
@@ -254,8 +267,8 @@ Require stack:
 - /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/commands/index.js
 - /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/index.js
 - /home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase.js {"code":"MODULE_NOT_FOUND","requireStack":["/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/index.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/prepare.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/functionsEmulatorShared.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/controller.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/commands/database-get.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/commands/index.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/index.js","/home/felecia/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase.js"]}
-[debug] [2024-11-23T09:23:53.875Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
-[debug] [2024-11-23T09:23:53.875Z] > [functions] package.json contents: {
+[debug] [2024-11-24T09:26:42.980Z] checkFunctionsSDKVersion encountered error: Invalid Version:  {}
+[debug] [2024-11-24T09:26:42.981Z] > [functions] package.json contents: {
   "name": "functions",
   "scripts": {
     "lint": "eslint --ext .js,.ts .",
@@ -289,18 +302,18 @@ Require stack:
 [error] ⬢  functions: Failed to load function definition from source: FirebaseError: There was an error reading functions/package.json:
 
  functions/lib/index.js does not exist, can't deploy Cloud Functions {"metadata":{"emulator":{"name":"functions"},"message":"Failed to load function definition from source: FirebaseError: There was an error reading functions/package.json:\n\n functions/lib/index.js does not exist, can't deploy Cloud Functions"}}
-[debug] [2024-11-23T09:23:53.876Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=demo-campusthrifts-default-rtdb
-[debug] [2024-11-23T09:23:53.876Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \".read\": \"true\",  \n    \".write\": \"true\",  \n  }\n}"
-[debug] [2024-11-23T09:23:54.069Z] 04:23:54.069 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - demo-campusthrifts-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 95ms, init: 0ms
- {"metadata":{"emulator":{"name":"database"},"message":"04:23:54.069 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - demo-campusthrifts-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 95ms, init: 0ms\n"}}
-[debug] [2024-11-23T09:23:54.108Z] 04:23:54.108 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace demo-campusthrifts-default-rtdb status Active to Active
- {"metadata":{"emulator":{"name":"database"},"message":"04:23:54.108 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace demo-campusthrifts-default-rtdb status Active to Active\n"}}
-[debug] [2024-11-23T09:23:54.138Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
-[debug] [2024-11-23T09:23:54.138Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
-[debug] [2024-11-23T09:23:54.139Z] >>> [apiv2][query] GET http://127.0.0.1:9399/emulator/info [none]
-[debug] [2024-11-23T09:23:54.140Z] <<< [apiv2][status] GET http://127.0.0.1:9399/emulator/info 200
-[debug] [2024-11-23T09:23:54.141Z] <<< [apiv2][body] GET http://127.0.0.1:9399/emulator/info {"version":"","services":[{"serviceId":"CampusThrifts","connectionString":"dbname='fdcdb' host='127.0.0.1' port='5432' sslmode='disable' dbname='fdcdb'"}]}
-[debug] [2024-11-23T09:23:54.143Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED 127.0.0.1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[debug] [2024-11-24T09:26:42.982Z] >>> [apiv2][query] PUT http://127.0.0.1:9000/.settings/rules.json ns=campusthrifts-f60e0-default-rtdb
+[debug] [2024-11-24T09:26:42.982Z] >>> [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json "{\n  \"rules\": {\n    \".read\": \"true\",  \n    \".write\": \"true\",  \n  }\n}"
+[debug] [2024-11-24T09:26:43.176Z] 04:26:43.176 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - campusthrifts-f60e0-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 97ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"04:26:43.176 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - campusthrifts-f60e0-default-rtdb successfully activated FBKV (SurveyIdle(0)) wait: 97ms, init: 0ms\n"}}
+[debug] [2024-11-24T09:26:43.225Z] 04:26:43.225 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace campusthrifts-f60e0-default-rtdb status Active to Active
+ {"metadata":{"emulator":{"name":"database"},"message":"04:26:43.225 [NamespaceSystem-blocking-namespace-operation-dispatcher-6] INFO com.firebase.core.namespace.StateManager - Namespace campusthrifts-f60e0-default-rtdb status Active to Active\n"}}
+[debug] [2024-11-24T09:26:43.249Z] <<< [apiv2][status] PUT http://127.0.0.1:9000/.settings/rules.json 200
+[debug] [2024-11-24T09:26:43.249Z] <<< [apiv2][body] PUT http://127.0.0.1:9000/.settings/rules.json {"status":"ok"}
+[debug] [2024-11-24T09:26:43.249Z] >>> [apiv2][query] GET http://127.0.0.1:9399/emulator/info [none]
+[debug] [2024-11-24T09:26:43.251Z] <<< [apiv2][status] GET http://127.0.0.1:9399/emulator/info 200
+[debug] [2024-11-24T09:26:43.251Z] <<< [apiv2][body] GET http://127.0.0.1:9399/emulator/info {"version":"","services":[{"serviceId":"CampusThrifts","connectionString":"dbname='fdcdb' host='127.0.0.1' port='5432' sslmode='disable' dbname='fdcdb'"}]}
+[debug] [2024-11-24T09:26:43.254Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED 127.0.0.1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
 [info] 
 ┌─────────────────────────────────────────────────────────────┐
 │ ✔  All emulators ready! It is now safe to connect your app. │
@@ -314,7 +327,7 @@ Require stack:
 ├────────────────┼────────────────┼──────────────────────────────────┤
 │ Functions      │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
 ├────────────────┼────────────────┼──────────────────────────────────┤
-│ Firestore      │ 127.0.0.1:8080 │ http://127.0.0.1:4000/firestore  │
+│ Firestore      │ 127.0.0.1:8081 │ http://127.0.0.1:4000/firestore  │
 ├────────────────┼────────────────┼──────────────────────────────────┤
 │ Database       │ 127.0.0.1:9000 │ http://127.0.0.1:4000/database   │
 ├────────────────┼────────────────┼──────────────────────────────────┤
@@ -327,267 +340,22 @@ Require stack:
 │ Extensions     │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
 └────────────────┴────────────────┴──────────────────────────────────┘
   Emulator Hub running at 127.0.0.1:4400
-  Other reserved ports: 4500, 9150
+  Other reserved ports: 4500, 9151
 ┌─────────────────────────┬───────────────┬─────────────────────┐
 │ Extension Instance Name │ Extension Ref │ View in Emulator UI │
 └─────────────────────────┴───────────────┴─────────────────────┘
 Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
  
-[debug] [2024-11-23T09:24:03.500Z] Nov 23, 2024 4:24:03 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+[debug] [2024-11-24T09:26:44.023Z] Nov 24, 2024 4:26:44 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
 INFO: Connected to new websocket client
- {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 23, 2024 4:24:03 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
-[debug] [2024-11-23T10:46:23.948Z] Nov 23, 2024 5:46:23 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
-INFO: Websocket client disconnected
- {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 23, 2024 5:46:23 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
-[debug] [2024-11-23T19:44:53.882Z] Nov 23, 2024 2:44:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 24, 2024 4:26:44 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-11-24T09:27:00.104Z] Nov 24, 2024 4:27:00 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
 INFO: Connected to new websocket client
- {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 23, 2024 2:44:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
-[debug] [2024-11-23T19:51:59.356Z] Received signal SIGHUP 1
-[info]  
-[info] i  emulators: Received SIGHUP for the first time. Starting a clean shutdown. 
-[info] i  emulators: Please wait for a clean shutdown or send the SIGHUP signal again to stop right now. 
-[debug] [2024-11-23T19:51:59.433Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.438Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.442Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.442Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.443Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.443Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.444Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.444Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.445Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.446Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.447Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.448Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.449Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.509Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.510Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.519Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.520Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.521Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
-[error] 
-[error] Error: An unexpected error has occurred.
-[debug] [2024-11-23T19:51:59.533Z] Error: write EIO
-    at afterWriteDispatched (node:internal/stream_base_commons:160:15)
-    at writeGeneric (node:internal/stream_base_commons:151:3)
-    at Socket._writeGeneric (node:net:863:11)
-    at Socket._write (node:net:875:8)
-    at writeOrBuffer (node:internal/streams/writable:392:12)
-    at _write (node:internal/streams/writable:333:10)
-    at Writable.write (node:internal/streams/writable:337:10)
-    at Console.log (/home/felecia/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
-    at Console._write (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
-    at doWrite (/home/felecia/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 24, 2024 4:27:00 AM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-11-24T09:27:16.541Z] 04:27:16.541 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested 
+namespace campusthrifts-f60e0, but the emulator is configured for campusthrifts-f60e0-default-rtdb. To 
+opt-out of single project mode add/set the singleProjectMode: false property in 
+the firebase.json emulators config. 
+ {"metadata":{"emulator":{"name":"database"},"message":"04:27:16.541 [FirebaseWorkerPool-1-3] WARN com.firebase.core.persistence.backend.dummy.EmulatorMetadataPersistence - Multiple projectIds are not recommended in single project mode. Requested \nnamespace campusthrifts-f60e0, but the emulator is configured for campusthrifts-f60e0-default-rtdb. To \nopt-out of single project mode add/set the singleProjectMode: false property in \nthe firebase.json emulators config. \n"}}
+[debug] [2024-11-24T09:27:16.553Z] 04:27:16.553 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - campusthrifts-f60e0 successfully activated FBKV (SurveyIdle(0)) wait: 8ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"04:27:16.553 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO com.firebase.core.namespace.NamespaceActor - campusthrifts-f60e0 successfully activated FBKV (SurveyIdle(0)) wait: 8ms, init: 0ms\n"}}

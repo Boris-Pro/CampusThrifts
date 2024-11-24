@@ -13,13 +13,11 @@
 package connectors.default
 
 import com.google.firebase.dataconnect.getInstance as _fdcGetInstance
-import kotlinx.serialization.DeserializationStrategy
-import kotlinx.serialization.SerializationStrategy
 
 public interface DefaultConnector : com.google.firebase.dataconnect.generated.GeneratedConnector<DefaultConnector> {
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 
-
+  
 
   public companion object {
     @Suppress("MemberVisibilityCanBePrivate")
@@ -58,7 +56,7 @@ public fun DefaultConnector.Companion.getInstance(
 private class DefaultConnectorImpl(
   override val dataConnect: com.google.firebase.dataconnect.FirebaseDataConnect
 ) : DefaultConnector {
-
+  
 
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun operations(): List<com.google.firebase.dataconnect.generated.GeneratedOperation<DefaultConnector, *, *>> =
@@ -67,13 +65,13 @@ private class DefaultConnectorImpl(
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun mutations(): List<com.google.firebase.dataconnect.generated.GeneratedMutation<DefaultConnector, *, *>> =
     listOf(
-
+      
     )
 
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
   override fun queries(): List<com.google.firebase.dataconnect.generated.GeneratedQuery<DefaultConnector, *, *>> =
     listOf(
-
+      
     )
 
   @com.google.firebase.dataconnect.ExperimentalFirebaseDataConnect
