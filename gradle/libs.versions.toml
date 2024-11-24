@@ -1,5 +1,5 @@
 [versions]
-agp = "8.7.1"
+agp = "8.4.2"
 coreSplashscreen = "1.0.1"
 credentials = "<latest version>"
 googleid = "<latest version>"
@@ -18,8 +18,10 @@ firebaseAuth = "23.0.0"
 firebaseFirestoreKtx = "25.1.0"
 playServicesAuth = "21.2.0"
 firebaseStorage = "21.0.1"
+androidx_recyclerview = "1.2.1"
 
 [libraries]
+androidx_recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "androidx_recyclerview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }

@@ -1,17 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+<!-- Table Headings -->
+<LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".CartFragment">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:background="#EEEEEE">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_cart_fragment"
-        android:textSize="36sp"
-        android:textColor="@color/blue"
-        android:gravity="center" />
+        android:id="@+id/heading_product_name"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Product"
+        android:textStyle="bold"
+        android:gravity="start"
+        android:textSize="16sp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/heading_product_price"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/heading_quantity"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:text="Qty"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/item_total_price"
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:text="Total"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="16sp" />
+
+
+</LinearLayout>
+
+<!-- RecyclerView for Cart Items -->
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="#EEEEEE">
+    <TextView
+        android:id="@+id/heading_total_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total: "
+        android:textStyle="bold"
+        android:gravity="center"
+        android:paddingStart="8dp"
+        android:textSize="16sp" />
+    </LinearLayout>
+
+<!-- Checkout Button -->
+<Button
+    android:id="@+id/checkout_button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Checkout" />
+</LinearLayout>

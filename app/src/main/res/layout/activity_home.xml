@@ -2,7 +2,7 @@
     <!--  App Bar Layout  -->
     <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="wrap_content">
         <!--  Toolbar  -->
-        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:title="Home" app:titleTextColor="@android:color/black" app:navigationIcon="@drawable/placeholderimage" app:contentInsetStart="0dp">
+        <!--<androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:title="Home" app:titleTextColor="@android:color/black" app:navigationIcon="@drawable/placeholderimage" app:contentInsetStart="0dp">-->
             <!--  Right-side Icons  -->
             <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal" android:layout_gravity="end" android:gravity="center_vertical">
                 <!--  Shopping Cart Icon  -->
@@ -10,8 +10,9 @@
                 <!--  User Profile Photo  -->
 <!--                <ImageView android:id="@+id/userProfilePhoto" android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/placeholderimage" android:padding="8dp" android:contentDescription="@string/user_profile_photo" app:layout_collapseMode="pin"/>-->
             </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
+        <!--</androidx.appcompat.widget.Toolbar>-->
     </com.google.android.material.appbar.AppBarLayout>
+
     <!--  Main Content  -->
     <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">

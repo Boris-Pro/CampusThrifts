@@ -23,10 +23,15 @@
             android:exported="false" />
         <activity
             android:name=".ProfileSettingActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:label="Profile Settings"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity
             android:name=".CartActivity"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
+            android:name=".CheckoutActivity"
+            android:exported="true"/>
         <activity
             android:name=".ProductDetailedActivity"
             android:exported="false" />

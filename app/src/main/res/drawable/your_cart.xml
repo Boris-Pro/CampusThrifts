@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <!-- drawable/your_cart.xml -->
+<vector
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:aapt="http://schemas.android.com/aapt"
+android:width="360dp"
+android:height="800dp"
+android:viewportWidth="360"
+android:viewportHeight="800"
+    >
+<group>
+    <clip-path
+        android:pathData="M25 0H335C348.807 0 360 11.1929 360 25V775C360 788.807 348.807 800 335 800H25C11.1929 800 0 788.807 0 775V25C0 11.1929 11.1929 0 25 0Z"
+        />
+    <path
+        android:pathData="M0 0V800H360V0"
+        android:fillColor="#FFFFFF"
+        />
+</group>
+</vector>

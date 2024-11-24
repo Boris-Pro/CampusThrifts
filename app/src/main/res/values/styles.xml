@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="your_cart">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#1D1F22</item>
+    </style>
+</resources>
