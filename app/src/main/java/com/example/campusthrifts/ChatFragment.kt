@@ -1,6 +1,7 @@
 package com.example.campusthrifts
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,11 +25,17 @@ class ChatFragment : Fragment() {
     private lateinit var messageAdapter: MessageAdapter
     private val messagesList = mutableListOf<Message>()
 
+    private val TAG = "ChatFragment"
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        Log.d(TAG, "onCreateView: Inflating layout")
+        Log.d(TAG, "onCreateView started")
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
+        Log.d(TAG, "Layout inflated")
 
         // Initialize Firebase
         auth = FirebaseAuth.getInstance()
@@ -38,6 +45,8 @@ class ChatFragment : Fragment() {
         messageRecyclerView = view.findViewById(R.id.messageRecyclerView)
         messageEditText = view.findViewById(R.id.messageEditText)
         sendButton = view.findViewById(R.id.sendButton)
+
+        Log.d(TAG, "onCreateView: Views initialized")
 
         // Setup RecyclerView
         setupRecyclerView()
@@ -51,12 +60,37 @@ class ChatFragment : Fragment() {
         return view
     }
 
+    private fun initializeViews(view: View) {
+        try {
+            messageRecyclerView = view.findViewById(R.id.messageRecyclerView)
+                ?: throw NullPointerException("messageRecyclerView not found")
+            messageEditText = view.findViewById(R.id.messageEditText)
+                ?: throw NullPointerException("messageEditText not found")
+            sendButton = view.findViewById(R.id.sendButton)
+                ?: throw NullPointerException("sendButton not found")
+
+            Log.d(TAG, "Views initialized successfully")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error initializing views: ${e.message}")
+            throw e
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG, "onViewCreated: Fragment view created")
+    }
+
     private fun setupRecyclerView() {
+        Log.d(TAG, "Setting up RecyclerView")
         messageAdapter = MessageAdapter(messagesList, auth.currentUser?.uid ?: "")
         messageRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(context).apply {
+                stackFromEnd = true // Scrolls to bottom by default
+            }
             adapter = messageAdapter
         }
+        Log.d(TAG, "RecyclerView setup complete")
     }
 
     private fun setupMessageSending() {
@@ -85,12 +119,13 @@ class ChatFragment : Fragment() {
     }
 
     private fun listenForMessages() {
-        database.addChildEventListener(object : ChildEventListener {
+        database.orderByChild("timestamp").addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val message = snapshot.getValue(Message::class.java)
                 message?.let {
                     messagesList.add(it)
-                    messageAdapter.notifyItemInserted(messagesList.size - 1)
+                    messagesList.sortBy { it.timestamp }
+                    messageAdapter.notifyDataSetChanged()
                     messageRecyclerView.scrollToPosition(messagesList.size - 1)
                 }
             }

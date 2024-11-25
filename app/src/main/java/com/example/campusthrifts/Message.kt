@@ -1,3 +1,4 @@
+// Message.kt
 package com.example.campusthrifts
 
 data class Message(

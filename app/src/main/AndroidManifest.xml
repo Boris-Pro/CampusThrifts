@@ -41,6 +41,9 @@
             android:name=".ProfileSettingActivity"
             android:exported="false" />
         <activity
+            android:name=".ChatActivity"
+            android:exported="true" />
+        <activity
             android:name=".CartActivity"
             android:exported="false" />
         <activity

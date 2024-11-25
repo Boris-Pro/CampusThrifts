@@ -115,7 +115,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.bottom_search -> SearchFragment()
                 R.id.bottom_cart -> CartFragment()
                 R.id.bottom_profile -> ProfileFragment()
-                R.id.bottom_chat -> ChatFragment()
+                R.id.bottom_chat -> {
+                    startActivity(Intent(this, ChatActivity::class.java))
+                    return@setOnItemSelectedListener true
+                }
                 else -> null
             }
             if (selectedFragment != null && currentFragment?.javaClass != selectedFragment.javaClass) {
@@ -140,6 +143,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_home -> openFragment(HomeFragment())
             R.id.nav_profile -> openFragment(ProfileFragment())
+            R.id.nav_chat -> {
+                startActivity(Intent(this, ChatActivity::class.java))
+            }
             R.id.nav_dashboard -> openFragment(DashboardFragment())
             R.id.nav_settings -> openFragment(SettingsFragment())
             R.id.nav_about -> openFragment(AboutFragment())
