@@ -2,10 +2,13 @@ package com.example.campusthrifts
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.Manifest
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +21,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import coil.load
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -37,6 +42,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var firstNameEditText: TextInputEditText
     private lateinit var lastNameEditText: TextInputEditText
+    private lateinit var usernameEditText: TextInputEditText
     private lateinit var emailEditText: TextInputEditText
     private lateinit var studentIdEditText: TextInputEditText
     private lateinit var phoneNumberEditText: TextInputEditText
@@ -80,9 +86,13 @@ class ProfileFragment : Fragment() {
 
         firstNameEditText = view.findViewById(R.id.textInputEditText)
         lastNameEditText = view.findViewById(R.id.textInputEditText3)
+        usernameEditText = view.findViewById(R.id.usernameText)
         emailEditText = view.findViewById(R.id.textInputEditText4)
         studentIdEditText = view.findViewById(R.id.textInputEditText2)
         phoneNumberEditText = view.findViewById(R.id.textInputEditText5)
+
+        // Load user profile data when the fragment is created
+        loadUserProfile()
 
         // Set click listeners
         backButton.setOnClickListener {
@@ -90,7 +100,7 @@ class ProfileFragment : Fragment() {
         }
 
         cameraButton.setOnClickListener {
-            selectImageFromGallery()
+            checkAndRequestPermissions()
         }
 
         saveButton.setOnClickListener {
@@ -105,6 +115,127 @@ class ProfileFragment : Fragment() {
         loadProfileImage()
     }
 
+    private fun loadUserProfile() {
+        val currentUser = auth.currentUser ?: run {
+            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        progressBar.visibility = View.VISIBLE
+        firestore.collection("users").document(currentUser.uid)
+            .get()
+            .addOnSuccessListener { document ->
+                progressBar.visibility = View.GONE
+                if (document.exists()) {
+                    try {
+                        val user = document.toObject(User::class.java)
+                        user?.let { populateUserData(it) }
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), "Error parsing user data", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    createNewUserDocument(currentUser.uid, currentUser.email)
+                }
+            }
+            .addOnFailureListener { e ->
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Failed to load profile: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun populateUserData(user: User) {
+        firstNameEditText.setText(user.firstName)
+        lastNameEditText.setText(user.lastName)
+        usernameEditText.setText(user.username)
+        emailEditText.setText(user.email)
+        studentIdEditText.setText(user.studentId)
+        phoneNumberEditText.setText(user.phoneNumber)
+
+        if (user.profileImageUrl.isNotEmpty()) {
+            profileImageButton.load(user.profileImageUrl) {
+                crossfade(true)
+                placeholder(R.drawable.profile_image)
+                error(R.drawable.profile_image)
+            }
+        }
+    }
+
+    private fun createNewUserDocument(userId: String, email: String?) {
+        val newUser = User(
+            uid = userId,
+            username = "",
+            email = email ?: "",
+            createdAt = Timestamp.now(),
+            updatedAt = Timestamp.now()
+        )
+
+        progressBar.visibility = View.VISIBLE
+        firestore.collection("users").document(userId)
+            .set(newUser)
+            .addOnSuccessListener {
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Profile created successfully", Toast.LENGTH_SHORT).show()
+                populateUserData(newUser)
+            }
+            .addOnFailureListener { e ->
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Failed to create profile: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun checkAndRequestPermissions() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            // Android 13 and above
+            when {
+                requireContext().checkSelfPermission(android.Manifest.permission.READ_MEDIA_IMAGES)
+                        == PackageManager.PERMISSION_GRANTED -> {
+                    selectImageFromGallery()
+                }
+                else -> {
+                    requestPermissions(
+                        arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES),
+                        PERMISSION_REQUEST_CODE
+                    )
+                }
+            }
+        } else {
+            // Below Android 13
+            when {
+                requireContext().checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED -> {
+                    selectImageFromGallery()
+                }
+                else -> {
+                    requestPermissions(
+                        arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
+                        PERMISSION_REQUEST_CODE
+                    )
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 123
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    selectImageFromGallery()
+                } else {
+                    Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+    }
+
     private fun selectImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         imagePickerLauncher.launch(intent)
@@ -114,11 +245,7 @@ class ProfileFragment : Fragment() {
         if (resultCode == Activity.RESULT_OK && data != null) {
             imageUri = data.data
             imageUri?.let {
-                profileImageButton.load(it) {
-                    crossfade(true)
-                    placeholder(R.drawable.profile_image)
-                    error(R.drawable.profile_image)
-                }
+                // Don't update the UI here, let it update after successful upload
                 uploadImageToFirebase(it)
             }
         } else {
@@ -147,9 +274,15 @@ class ProfileFragment : Fragment() {
         fileRef.putBytes(compressedImage)
             .addOnSuccessListener {
                 fileRef.downloadUrl.addOnSuccessListener { downloadUri ->
+                    // Update the UI immediately with the new image
+                    profileImageButton.load(downloadUri) {
+                        crossfade(true)
+                        placeholder(R.drawable.profile_image)
+                        error(R.drawable.profile_image)
+                    }
+
+                    // Save the URL to Firestore
                     saveProfileImageUrl(downloadUri.toString())
-                    Toast.makeText(requireContext(), "Profile image uploaded successfully", Toast.LENGTH_SHORT).show()
-                    progressBar.visibility = View.GONE
                 }
             }
             .addOnFailureListener { e ->
@@ -171,20 +304,23 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveProfileImageUrl(url: String) {
-        val currentUser = auth.currentUser ?: run {
-            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
-            return
-        }
+        val currentUser = auth.currentUser ?: return
 
-        val userId = currentUser.uid
+        val updates = hashMapOf<String, Any>(
+            "profileImageUrl" to url,
+            "updatedAt" to Timestamp.now()
+        )
 
-        firestore.collection("users").document(userId)
-            .update("profileImageUrl", url)
+        progressBar.visibility = View.VISIBLE
+        firestore.collection("users").document(currentUser.uid)
+            .update(updates)  // Use update instead of set to prevent overwriting other fields
             .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Profile image URL saved", Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Profile image updated", Toast.LENGTH_SHORT).show()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to save profile image URL: ${e.message}", Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
+                Toast.makeText(requireContext(), "Failed to update profile image: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
@@ -258,34 +394,153 @@ class ProfileFragment : Fragment() {
     }
 
     private fun saveProfileSettings() {
-        val firstName = firstNameEditText.text.toString().trim()
-        val lastName = lastNameEditText.text.toString().trim()
-        val email = emailEditText.text.toString().trim()
-        val studentId = studentIdEditText.text.toString().trim()
-        val phoneNumber = phoneNumberEditText.text.toString().trim()
-
         val currentUser = auth.currentUser ?: run {
             Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
             return
         }
 
-        val userId = currentUser.uid
+        val username = usernameEditText.text.toString().trim()
 
-        val userUpdates = hashMapOf(
-            "firstName" to firstName,
-            "lastName" to lastName,
-            "email" to email,
-            "studentId" to studentId,
-            "phoneNumber" to phoneNumber
-        )
+        // Validate username
+        if (username.isEmpty()) {
+            usernameEditText.error = "Username cannot be empty"
+            return
+        }
 
-        firestore.collection("users").document(userId)
-            .update(userUpdates as Map<String, Any>)
-            .addOnSuccessListener {
-                Toast.makeText(requireContext(), "Profile settings saved", Toast.LENGTH_SHORT).show()
+        if (!isValidUsername(username)) {
+            usernameEditText.error =
+                "Username must be 3-20 characters long and contain only letters, numbers, and underscores"
+            return
+        }
+
+        progressBar.visibility = View.VISIBLE
+
+        checkUsernameAvailability(username) { isAvailable ->
+            requireActivity().runOnUiThread {
+                if (isAvailable) {
+                    proceedWithSaving(currentUser.uid, username)
+                } else {
+                    progressBar.visibility = View.GONE
+                    usernameEditText.error = "Username is already taken"
+                    Toast.makeText(
+                        requireContext(),
+                        "Username is already taken",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+
+    private fun checkUsernameAvailability(username: String, callback: (Boolean) -> Unit) {
+        val currentUser = auth.currentUser ?: run {
+            Toast.makeText(requireContext(), "User not authenticated", Toast.LENGTH_SHORT).show()
+            callback(false)
+            return
+        }
+
+        progressBar.visibility = View.VISIBLE
+
+        // First check if this is the user's current username
+        firestore.collection("users").document(currentUser.uid)
+            .get()
+            .addOnSuccessListener { currentUserDoc ->
+                val currentUsername = currentUserDoc.getString("username") ?: ""
+
+                // If the username hasn't changed, no need to check availability
+                if (currentUsername == username) {
+                    progressBar.visibility = View.GONE
+                    callback(true)
+                    return@addOnSuccessListener
+                }
+
+                // Check if username is taken by another user
+                firestore.collection("users")
+                    .whereEqualTo("username", username)
+                    .get()
+                    .addOnSuccessListener { querySnapshot ->
+                        progressBar.visibility = View.GONE
+                        callback(querySnapshot.isEmpty)
+                    }
+                    .addOnFailureListener { e ->
+                        progressBar.visibility = View.GONE
+                        Log.e("ProfileFragment", "Username check failed", e)
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to check username availability: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        callback(false)
+                    }
             }
             .addOnFailureListener { e ->
-                Toast.makeText(requireContext(), "Failed to save profile settings: ${e.message}", Toast.LENGTH_SHORT).show()
+                progressBar.visibility = View.GONE
+                Log.e("ProfileFragment", "Current user fetch failed", e)
+                Toast.makeText(
+                    requireContext(),
+                    "Failed to fetch current user data: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                callback(false)
             }
     }
+
+    private fun proceedWithSaving(userId: String, username: String) {
+        progressBar.visibility = View.VISIBLE
+
+        // First fetch the existing document
+        firestore.collection("users").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                val existingCreatedAt = document.getTimestamp("createdAt")
+                val existingUid = document.getString("uid")
+
+                val updates = hashMapOf(
+                    "firstName" to firstNameEditText.text.toString().trim(),
+                    "lastName" to lastNameEditText.text.toString().trim(),
+                    "username" to username,
+                    "email" to emailEditText.text.toString().trim(),
+                    "studentId" to studentIdEditText.text.toString().trim(),
+                    "phoneNumber" to phoneNumberEditText.text.toString().trim(),
+                    "updatedAt" to Timestamp.now(),
+                    // Preserve the original createdAt and uid
+                    "createdAt" to (existingCreatedAt ?: Timestamp.now()),
+                    "uid" to (existingUid ?: userId)
+                )
+
+                firestore.collection("users").document(userId)
+                    .set(updates, SetOptions.merge())  // Use merge to preserve any other fields
+                    .addOnSuccessListener {
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(requireContext(), "Profile updated successfully", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener { e ->
+                        progressBar.visibility = View.GONE
+                        Log.e("ProfileFragment", "Profile update failed", e)
+                        Toast.makeText(
+                            requireContext(),
+                            "Failed to update profile: ${e.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+            }
+            .addOnFailureListener { e ->
+                progressBar.visibility = View.GONE
+                Log.e("ProfileFragment", "Failed to fetch existing data", e)
+                Toast.makeText(
+                    requireContext(),
+                    "Failed to fetch existing data: ${e.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+    }
+
+    private fun isValidUsername(username: String): Boolean {
+        // Username should be 3-20 characters long
+        // Only allow letters, numbers, and underscores
+        val usernamePattern = "^[a-zA-Z0-9_]{3,20}$"
+        return username.matches(usernamePattern.toRegex())
+    }
+
+
 }
