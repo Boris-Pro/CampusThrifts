@@ -9,16 +9,6 @@
 
     <!-- Product Image and Name -->
 
-    <ImageView
-        android:id="@+id/itemImage"
-        android:layout_width="327dp"
-        android:layout_height="349dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic"
-        android:paddingTop="80dp"/>
-
     <TextView
         android:id="@+id/itemNameLabel"
         android:layout_width="wrap_content"
@@ -34,57 +24,83 @@
 
     <!-- Size or Quantity Selection -->
 
-    <TextView
-        android:id="@+id/quantitySizeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Quantity/Size"
-        android:textColor="@android:color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.146"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
-
+    <!-- Product Description -->
     <Spinner
         android:id="@+id/sizeOrQuantitySpinner"
         android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/quantitySizeLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantitySizeLabel" />
 
-    <!-- Product Description -->
-    <TextView
-        android:id="@+id/descriptionLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="16sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/sizeOrQuantitySpinner"
-        app:layout_constraintStart_toStartOf="parent" />
+    <ImageView
+        android:id="@+id/itemImage"
+        android:layout_width="327dp"
+        android:layout_height="349dp"
+        android:layout_marginTop="92dp"
+        android:paddingTop="80dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.595"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/productDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Product description goes here."
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
+        android:text="Product description goes here."
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/descriptionLabel" />
 
+    <TextView
+        android:id="@+id/quantitySizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Quantity/Size"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.174"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/itemNameLabel" />
 
+    <Button
+        android:id="@+id/addToCartBtn"
+        android:layout_width="141dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:text="Add to Cart"
+        app:layout_constraintBottom_toBottomOf="@+id/itemPriceLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/itemPriceLabel"
+        app:layout_constraintTop_toTopOf="@+id/itemPriceLabel"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/descriptionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:text="Description"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sizeOrQuantitySpinner" />
 
 
     <!-- Price -->
@@ -102,16 +118,5 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <!-- Add to Cart Button -->
-    <Button
-        android:id="@+id/addToCartBtn"
-        android:layout_width="141dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="16dp"
-        android:text="Add to Cart"
-        app:layout_constraintBottom_toBottomOf="@+id/itemPriceLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.976"
-        app:layout_constraintStart_toEndOf="@+id/itemPriceLabel"
-        app:layout_constraintTop_toTopOf="@+id/itemPriceLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
