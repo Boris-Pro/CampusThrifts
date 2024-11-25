@@ -4,6 +4,7 @@
     <string name="close_nav">Close Navigation Drawer</string>
     <string name="h_login">Log In</string>
     <string name="h_signup">Sign Up</string>
+    <string name="h_addproduct">Add Product</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="log_out">LOGOUT</string>
@@ -34,7 +35,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_dashboard_fragment">Dashboard fragment</string>
     <string name="hello_settings_fragment">Settings fragment</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_about_fragment">About fragment</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="back_button_desc">Back Button</string>
