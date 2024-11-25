@@ -32,38 +32,41 @@ class CartAdapter(
         val btnRemove: Button = itemView.findViewById(R.id.btn_remove)
 
         init {
-            // Increase quantity
+
             btnIncrease.setOnClickListener {
                 val cartItem = cartItems[adapterPosition]
                 cartItem.quantity++
                 itemQuantity.setText(cartItem.quantity.toString())
-                onQuantityChanged(cartItem) // Notify the activity to update Firebase
+                itemTotalPrice.text = "$${cartItem.getTotalPrice()}"
+                onQuantityChanged(cartItem)
             }
 
-            // Decrease quantity
+
             btnDecrease.setOnClickListener {
                 val cartItem = cartItems[adapterPosition]
                 if (cartItem.quantity > 1) {
                     cartItem.quantity--
                     itemQuantity.setText(cartItem.quantity.toString())
-                    onQuantityChanged(cartItem) // Notify the activity to update Firebase
+                    itemTotalPrice.text = "$${cartItem.getTotalPrice()}"
+                    onQuantityChanged(cartItem)
                 }
             }
 
             // Remove item from cart
             btnRemove.setOnClickListener {
                 val cartItem = cartItems[adapterPosition]
-                onItemRemoved(cartItem) // Notify the activity to remove the item from Firebase
+                cartItems.removeAt(position)
+                onItemRemoved(cartItem)
             }
 
-            // Update quantity in real-time when manually changed in EditText
+
             itemQuantity.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     val newQuantity = s.toString().toIntOrNull() ?: 1
                     val cartItem = cartItems[adapterPosition]
                     if (cartItem.quantity != newQuantity) {
                         cartItem.quantity = newQuantity
-                        onQuantityChanged(cartItem) // Notify the activity to update Firebase
+                        onQuantityChanged(cartItem)
                     }
                 }
 

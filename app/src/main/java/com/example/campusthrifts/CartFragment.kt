@@ -22,6 +22,7 @@ class CartFragment : Fragment() {
     private lateinit var database: DatabaseReference // Firebase Database reference
     private val cartItems = mutableListOf<CartItem>()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
