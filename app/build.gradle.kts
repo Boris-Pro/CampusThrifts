@@ -83,4 +83,6 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 }
