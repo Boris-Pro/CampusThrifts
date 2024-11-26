@@ -43,11 +43,17 @@
     <string name="last_name_hint">Last Name</string>
     <string name="first_name_hint">First Name</string>
     <string name="email_hint">Email</string>
+    <string name="username_hint">Username</string>
     <string name="student_id_hint">Student ID #</string>
-    <string name="additional_field_hint">Additional Field</string>
-    <string name="gender_label">Gender</string>
-    <string name="male_option">Male</string>
-    <string name="female_option">Female</string>
-    <string name="other_option">Other</string>
     <string name="save_changes">Save Changes</string>
+    <string name="phone_number">Phone Number</string>"
+
+    <string name="phone_number_hint">Phone Number</string>
+    <string name="remove_image">Remove Image</string>
+
+    <string name="default_notification_channel_id">chat_messages</string>
+    <string name="msg_token_fmt">FCM Registration token: %1$s</string>
+
+    <string name="type_message_hint">Type a message...</string>
+    <string name="send_button">Send</string>
 </resources>

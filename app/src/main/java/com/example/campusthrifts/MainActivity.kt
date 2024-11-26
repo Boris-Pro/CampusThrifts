@@ -1,29 +1,76 @@
 package com.example.campusthrifts
 
+import android.Manifest
+import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.campusthrifts.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.BuildConfig
+import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
+// import com.google.firebase.auth
 import com.google.firebase.database.FirebaseDatabase
+// import com.google.firebase.database
+import com.google.firebase.messaging.FirebaseMessaging
+import com.google.firebase.storage.FirebaseStorage
+
+// import com.google.firebase.storage
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var fragmentManager: FragmentManager
     private lateinit var binding: ActivityMainBinding
 
+    // ======= Added Code Start =======
+
+    // Declare the permission launcher at the top of the MainActivity class
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            // Permission granted. FCM can post notifications.
+            Toast.makeText(this, "Notification Permission Granted", Toast.LENGTH_SHORT).show()
+        } else {
+            // Permission denied. Inform the user that notifications won't be shown.
+            Toast.makeText(this, "Notification Permission Denied", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // When running in debug mode, connect to the Firebase Emulator Suite.
+        // "10.0.2.2" is a special IP address which allows the Android Emulator
+        // to connect to "localhost" on the host computer. The port values (9xxx)
+        // must match the values defined in the firebase.json file.
+        if (BuildConfig.DEBUG) {
+            // Use the Firebase Realtime Database emulator
+            val database = FirebaseDatabase.getInstance()
+            database.useEmulator("10.0.2.2", 9000)
+
+            // Use the Firebase Authentication emulator
+            val auth = FirebaseAuth.getInstance()
+            auth.useEmulator("10.0.2.2", 9099)
+
+            // Use the Firebase Storage emulator
+            val storage = FirebaseStorage.getInstance()
+            storage.useEmulator("10.0.2.2", 9199)
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -68,7 +115,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.bottom_search -> SearchFragment()
                 R.id.bottom_cart -> CartFragment()
                 R.id.bottom_profile -> ProfileFragment()
-                R.id.bottom_chat -> ChatFragment()
+                R.id.bottom_chat -> {
+                    startActivity(Intent(this, ChatActivity::class.java))
+                    return@setOnItemSelectedListener true
+                }
                 else -> null
             }
             if (selectedFragment != null && currentFragment?.javaClass != selectedFragment.javaClass) {
@@ -79,12 +129,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         fragmentManager = supportFragmentManager
         openFragment(HomeFragment())
+
+        // ======= Added Code Start =======
+
+        // Request notification permission
+        askNotificationPermission()
+
+        // Retrieve FCM token
+        retrieveFCMToken()
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_home -> openFragment(HomeFragment())
             R.id.nav_profile -> openFragment(ProfileFragment())
+            R.id.nav_chat -> {
+                startActivity(Intent(this, ChatActivity::class.java))
+            }
             R.id.nav_dashboard -> openFragment(DashboardFragment())
             R.id.nav_settings -> openFragment(SettingsFragment())
             R.id.nav_about -> openFragment(AboutFragment())
@@ -113,4 +174,94 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fragmentTransaction.addToBackStack(null) // Add fragment to back stack
         fragmentTransaction.commit()
     }
+
+    // ======= Added Code Start =======
+
+    private fun askNotificationPermission() {
+        // This is only necessary for API level >= 33 (TIRAMISU)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            when {
+                ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) == PackageManager.PERMISSION_GRANTED -> {
+                    // Permission already granted. FCM can post notifications.
+                    Log.d("MainActivity", "Notification permission already granted.")
+                }
+
+                shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) -> {
+                    // Show an educational UI explaining why the permission is needed
+                    showPermissionRationaleDialog()
+                }
+
+                else -> {
+                    // Directly ask for the permission
+                    requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                }
+            }
+        }
+    }
+
+    private fun showPermissionRationaleDialog() {
+        AlertDialog.Builder(this)
+            .setTitle("Notification Permission Needed")
+            .setMessage("CampusThrifts uses notifications to inform you about new messages and updates. Please allow notifications to stay informed.")
+            .setPositiveButton("Allow") { dialog, _ ->
+                // Request the permission after the user acknowledges the rationale
+                requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                dialog.dismiss()
+            }
+            .setNegativeButton("Deny") { dialog, _ ->
+                // User chose not to grant permission. Handle accordingly.
+                Toast.makeText(this, "Notifications will be disabled.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun retrieveFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("MainActivity", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // Get new FCM registration token
+            val token = task.result
+
+            // Log and send the token to your server
+            val msg = getString(R.string.msg_token_fmt, token)
+            Log.d("MainActivity", msg)
+
+            // Implement this method to send token to your app server
+            sendRegistrationTokenToServer(token)
+        }
+    }
+
+    private fun sendRegistrationTokenToServer(token: String?) {
+        // TODO: Implement the logic to send the token to your app server.
+        // This could involve making a network request using Retrofit, Volley, etc.
+        // Example using Retrofit (assuming you have an ApiService defined):
+        /*
+        if (token != null) {
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = RetrofitInstance.api.sendTokenToServer(TokenRequest(token))
+                    if (response.isSuccessful) {
+                        Log.d("MainActivity", "Token sent to server successfully.")
+                    } else {
+                        Log.e("MainActivity", "Failed to send token to server.")
+                    }
+                } catch (e: Exception) {
+                    Log.e("MainActivity", "Error sending token to server: ${e.message}")
+                }
+            }
+        }
+        */
+        Log.d("MainActivity", "sendRegistrationTokenToServer($token)")
+    }
+
+    // ======= Added Code End =======
+
 }

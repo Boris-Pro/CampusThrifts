@@ -5,5 +5,8 @@
     <color name="yellow">#FFFC00</color>
     <color name="purple">#FF800080</color>
     <color name="blue">#1A9DF1</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primaryColor">#C9BAE5</color>
+    <color name="secondaryColor">#F5F5F5</color>
 
 </resources>

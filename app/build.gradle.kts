@@ -56,7 +56,7 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
-    implementation("com.google.firebase:firebase-storage-ktx")//Fire base storage
+
     // Add the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation(libs.google.firebase.database)
