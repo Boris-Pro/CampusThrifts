@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AddProductActivity">
 
-    <!-- Product Header TextView with proper constraints -->
+    <!-- Product Header  -->
     <TextView
         android:id="@+id/h_addproduct"
         android:layout_width="wrap_content"
@@ -18,14 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/etProductName" /> <!-- Added Bottom constraint -->
+        app:layout_constraintBottom_toTopOf="@id/etProductName" />
 
     <!-- Product Name Field -->
     <EditText
         android:id="@+id/etProductName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Product Name"
+        android:hint="@string/enter_product_name"
         android:inputType="text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,11 +37,33 @@
         android:id="@+id/etProductPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Enter Product Price"
+        android:hint="@string/enter_product_price"
         android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/etProductName"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/etProductQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/quantity"
+        android:inputType="number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etProductPrice"
+        android:padding="16dp" />
+
+    <EditText
+        android:id="@+id/etProductDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        android:inputType="textMultiLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etProductQuantity"
         android:padding="16dp" />
 
     <!-- Image Selection Button -->
@@ -49,10 +71,10 @@
         android:id="@+id/btnSelectImage"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Select Product Image"
+        android:text="@string/select_product_image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etProductPrice"
+        app:layout_constraintTop_toBottomOf="@id/etProductDescription"
          />
 
     <!-- Image Preview (optional) -->
@@ -64,7 +86,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
-        android:contentDescription="Selected Image"
+        android:contentDescription="@string/selected_image"
         android:src="@drawable/ic_placeholder_image"
         android:layout_centerHorizontal="true" />
 
@@ -73,7 +95,7 @@
         android:id="@+id/btnUploadProduct"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Upload Product"
+        android:text="@string/save"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivSelectedImage"
