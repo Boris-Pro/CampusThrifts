@@ -39,7 +39,7 @@ class ProductAdapter(
             productName.text = product.name
             productPrice.text = "$${product.price}"
 
-            // Load image using Glide or Picasso
+            // Load image using Glide
             Glide.with(itemView.context)
                 .load(product.imageUrl)
                 .into(productImage)
