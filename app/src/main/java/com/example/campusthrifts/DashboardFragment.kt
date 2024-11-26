@@ -1,132 +1,189 @@
 package com.example.campusthrifts
 
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.*
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
+import coil.load
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
 import java.util.UUID
 
 
+
 class DashboardFragment : Fragment() {
-    private lateinit var productNameInput: EditText
-    private lateinit var productPriceInput: EditText
-    private lateinit var productDescriptionInput: EditText
-    private lateinit var productCategorySpinner: Spinner
     private lateinit var selectImageButton: Button
-    private lateinit var submitProductButton: Button
+    private lateinit var productImageView: ImageView
+    private lateinit var productNameEditText: EditText
+    private lateinit var productDescriptionEditText: EditText
+    private lateinit var productPriceEditText: EditText
+    private lateinit var productCategorySpinner: Spinner
+    private lateinit var saveProductButton: Button
 
-    private var selectedImageUri: Uri? = null
+    private var productImageUri: Uri? = null
 
-    // Category options for the spinner
-    private val categories = arrayOf("Clothes", "Furniture", "Electronics", "Appliance", "TextBooks", "Other")
+    private val storageReference = FirebaseStorage.getInstance().reference
+    private val databaseReference = FirebaseDatabase.getInstance().reference.child("items")
+    private val auth = FirebaseAuth.getInstance()
 
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
-    private val currentUser: FirebaseUser? = firebaseAuth.currentUser
+    private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        imagePickerLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            handleImagePickerResult(result.resultCode, result.data)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+    }
 
-        // Initialize views
-        productNameInput = view.findViewById(R.id.productNameInput)
-        productPriceInput = view.findViewById(R.id.productPriceInput)
-        productDescriptionInput = view.findViewById(R.id.productDescriptionInput)
-        productCategorySpinner = view.findViewById(R.id.productCategorySpinner)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         selectImageButton = view.findViewById(R.id.selectImageButton)
-        submitProductButton = view.findViewById(R.id.submitProductButton)
+        productImageView = view.findViewById(R.id.productImageView)
+        productNameEditText = view.findViewById(R.id.productNameEditText)
+        productDescriptionEditText = view.findViewById(R.id.productDescriptionEditText)
+        productPriceEditText = view.findViewById(R.id.productPriceEditText)
+        productCategorySpinner = view.findViewById(R.id.productCategorySpinner)
+        saveProductButton = view.findViewById(R.id.saveProductButton)
 
-        // Set up the category spinner
+        setupCategorySpinner()
+
+        selectImageButton.setOnClickListener {
+            selectImageFromGallery()
+        }
+
+        saveProductButton.setOnClickListener {
+            saveProduct()
+        }
+    }
+
+    private fun setupCategorySpinner() {
+        val categories = arrayOf("Clothes","Shoes", "Furniture", "Electronics", "Books","Appliances", "Other")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categories)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         productCategorySpinner.adapter = adapter
-
-        // Set button listeners
-        selectImageButton.setOnClickListener {
-            openImagePicker()
-        }
-
-        submitProductButton.setOnClickListener {
-            uploadProductToFirebase()
-        }
-
-        return view
     }
 
-    private fun openImagePicker() {
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, 1001)
+    private fun selectImageFromGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        imagePickerLauncher.launch(intent)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1001 && resultCode == AppCompatActivity.RESULT_OK) {
-            selectedImageUri = data?.data
+    private fun handleImagePickerResult(resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && data != null) {
+            productImageUri = data.data
+            productImageUri?.let {
+                productImageView.load(it)
+            }
+        } else {
+            Toast.makeText(requireContext(), "Image selection cancelled", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun uploadProductToFirebase() {
-        val productName = productNameInput.text.toString().trim()
-        val productPrice = productPriceInput.text.toString().trim()
-        val productDescription = productDescriptionInput.text.toString().trim()
-        val productCategory = productCategorySpinner.selectedItem.toString().trim()
-        val dateAdded = System.currentTimeMillis() // Current timestamp for dateAdded
+    private fun saveProduct() {
+        val name = productNameEditText.text.toString().trim()
+        val description = productDescriptionEditText.text.toString().trim()
+        val priceText = productPriceEditText.text.toString().trim()
+        val category = productCategorySpinner.selectedItem.toString()
+        val price = priceText.toDoubleOrNull()
 
-        // Get the current user's UID
-        val userUid = currentUser?.uid
-
-        if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || selectedImageUri == null || userUid == null) {
-            Toast.makeText(requireContext(), "Please fill all fields and select an image.", Toast.LENGTH_SHORT).show()
+        if (name.isEmpty() || description.isEmpty() || price == null || category.isEmpty()) {
+            Toast.makeText(requireContext(), "Please fill all fields", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Upload image to Firebase Storage
-        val storageReference = FirebaseStorage.getInstance().reference.child("product_images/${UUID.randomUUID()}.jpg")
-        storageReference.putFile(selectedImageUri!!)
-            .addOnSuccessListener {
-                storageReference.downloadUrl.addOnSuccessListener { imageUrl ->
-                    // Save product to Firebase Database
-                    val databaseReference = FirebaseDatabase.getInstance().reference.child("products")
-                    val productId = databaseReference.push().key
-                    val product = Products(
-                        id = productId,
-                        name = productName,
-                        price = productPrice.toDouble(),
-                        description = productDescription,
-                        imageUrl = imageUrl.toString(),
-                        category = productCategory,
-                        dateAdded = dateAdded,
-                        uid = userUid // Add the user UID here
-                    )
+        val userId = auth.currentUser?.uid ?: return
+        val timestamp = System.currentTimeMillis()
 
-                    databaseReference.child(productId!!).setValue(product)
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                Toast.makeText(requireContext(), "Product added successfully!", Toast.LENGTH_SHORT).show()
-                                requireActivity().onBackPressed()
-                            } else {
-                                Toast.makeText(requireContext(), "Failed to add product.", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+        if (productImageUri != null) {
+            uploadImageAndSaveProduct(name, description, price, category, userId, timestamp)
+        } else {
+            saveProductToDatabase(name, description, price, null, category, userId, timestamp)
+        }
+    }
+
+    private fun uploadImageAndSaveProduct(
+        name: String,
+        description: String,
+        price: Double,
+        category: String,
+        userId: String,
+        timestamp: Long
+    ) {
+        val productId = UUID.randomUUID().toString()
+        val imageRef = storageReference.child("product_images/$productId.jpg")
+
+        val compressedImage = compressImage(productImageUri!!)
+
+        imageRef.putBytes(compressedImage)
+            .addOnSuccessListener {
+                imageRef.downloadUrl.addOnSuccessListener { uri ->
+                    saveProductToDatabase(name, description, price, uri.toString(), category, userId, timestamp)
                 }
             }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Image upload failed: ${it.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Image upload failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun compressImage(uri: Uri): ByteArray {
+        val bitmap = MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 80, outputStream)
+        return outputStream.toByteArray()
+    }
+
+    private fun saveProductToDatabase(
+        name: String,
+        description: String,
+        price: Double,
+        imageUrl: String?,
+        category: String,
+        userId: String,
+        timestamp: Long
+    ) {
+        val productId = databaseReference.push().key ?: return
+        val product = Products(
+            id = productId,
+            name = name,
+            price = price,
+            description = description,
+            imageUrl = imageUrl,
+            category = category,
+            dateAdded = timestamp,
+            uid = userId
+        )
+
+        databaseReference.child(productId).setValue(product)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "Product added successfully", Toast.LENGTH_SHORT).show()
+                requireActivity().onBackPressed()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Failed to add product: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }

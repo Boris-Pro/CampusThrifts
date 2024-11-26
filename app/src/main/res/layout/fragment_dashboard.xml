@@ -1,67 +1,67 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DashboardFragment">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <EditText
-        android:id="@+id/productNameInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <EditText
-        android:id="@+id/productPriceInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Product Price"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/productNameInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <EditText
-        android:id="@+id/productDescriptionInput"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Product Description"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/productPriceInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <Spinner
-        android:id="@+id/productCategorySpinner"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/productDescriptionInput"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- Product Image Section -->
+    <ImageView
+        android:id="@+id/productImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Product Image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholderimage" />
 
     <Button
         android:id="@+id/selectImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select Image"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/productCategorySpinner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:text="Select Product Image"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
 
-    <Button
-        android:id="@+id/submitProductButton"
-        android:layout_width="wrap_content"
+    <!-- Product Name Input -->
+    <EditText
+        android:id="@+id/productNameEditText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit Product"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/selectImageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:hint="Product Name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Product Description Input -->
+    <EditText
+        android:id="@+id/productDescriptionEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Description"
+        android:inputType="textMultiLine"
+        android:lines="3"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Product Price Input -->
+    <EditText
+        android:id="@+id/productPriceEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Product Price"
+        android:inputType="numberDecimal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Product Category Dropdown -->
+    <Spinner
+        android:id="@+id/productCategorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Save Product Button -->
+    <Button
+        android:id="@+id/saveProductButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Product" />
+</LinearLayout>
