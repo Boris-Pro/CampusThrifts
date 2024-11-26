@@ -75,12 +75,17 @@ dependencies {
     // Dependency for image cropping with uCrop
     implementation(libs.ucrop)
     implementation(libs.firebase.dataconnect)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
 
     // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.core.splashscreen)
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
 

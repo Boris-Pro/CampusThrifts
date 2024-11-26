@@ -1,4 +1,3 @@
-// MessageAdapter.kt
 package com.example.campusthrifts
 
 import android.view.LayoutInflater
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MessageAdapter(
-    private val messages: List<Message>,
+    private var messages: MutableList<Message>,
     private val currentUserId: String
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
@@ -43,6 +42,12 @@ class MessageAdapter(
         } else {
             VIEW_TYPE_MESSAGE_RECEIVED
         }
+    }
+
+    fun updateMessages(newMessages: List<Message>) {
+        messages.clear()
+        messages.addAll(newMessages)
+        notifyDataSetChanged()
     }
 
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
