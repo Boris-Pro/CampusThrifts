@@ -26,6 +26,7 @@ ucrop = "2.2.8"
 firebaseMessaging = "24.0.3"         # Latest stable version
 googleServices = "4.4.2"
 firebaseDataconnect = "16.0.0-beta03"
+lifecycleViewmodelAndroid = "2.8.7"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -60,6 +61,7 @@ firebase-dataconnect = { group = "com.google.firebase", name = "firebase-datacon
 glide = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
 glide-complier = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
 glide-okhttp3 = { group = "com.github.bumptech.glide", name = "okhttp3-integration", version = "4.15.1"}
+androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

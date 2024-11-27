@@ -1,6 +1,7 @@
 // MessageAdapter.kt
 package com.example.campusthrifts
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MessageAdapter(
-    private val messages: List<Message>,
+    private var messages: MutableList<ChatMessage>,
     private val currentUserId: String
 ) : RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
@@ -45,12 +46,19 @@ class MessageAdapter(
         }
     }
 
+    fun updateMessages(newMessages: List<ChatMessage>) {
+        messages.clear()
+        messages.addAll(newMessages)
+        Log.d("MessageAdapter", "Updating messages with ${newMessages.size} items")
+        notifyDataSetChanged()
+    }
+
     class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val messageText: TextView = itemView.findViewById(R.id.text_message_body)
         private val timeText: TextView = itemView.findViewById(R.id.text_message_time)
         private val nameText: TextView? = itemView.findViewById(R.id.text_message_name)
 
-        fun bind(message: Message) {
+        fun bind(message: ChatMessage) {
             messageText.text = message.text
             timeText.text = formatTimestamp(message.timestamp)
             nameText?.text = message.senderName

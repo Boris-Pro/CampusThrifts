@@ -1,74 +1,63 @@
+// ChatFragment.kt
 package com.example.campusthrifts
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
-import java.util.*
 
 class ChatFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var database: DatabaseReference
+    private var chatRoomId: String? = null
+    private var otherUserName: String? = null
 
+    private lateinit var messageAdapter: MessageAdapter
     private lateinit var messageRecyclerView: RecyclerView
     private lateinit var messageEditText: EditText
     private lateinit var sendButton: Button
 
-    private lateinit var messageAdapter: MessageAdapter
-    private val messagesList = mutableListOf<Message>()
+    private lateinit var viewModel: ChatViewModel
 
     private val TAG = "ChatFragment"
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        Log.d(TAG, "onCreateView: Inflating layout")
-        Log.d(TAG, "onCreateView started")
-        val view = inflater.inflate(R.layout.fragment_chat, container, false)
-        Log.d(TAG, "Layout inflated")
+    companion object {
+        fun newInstance(chatRoomId: String, otherUserName: String): ChatFragment {
+            return ChatFragment().apply {
+                arguments = Bundle().apply {
+                    putString("chatRoomId", chatRoomId)
+                    putString("otherUserName", otherUserName)
+                }
+            }
+        }
+    }
 
-        // Initialize Firebase
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        chatRoomId = arguments?.getString("chatRoomId")
+        otherUserName = arguments?.getString("otherUserName")
         auth = FirebaseAuth.getInstance()
-        database = FirebaseDatabase.getInstance().reference.child("messages")
+    }
 
-        // Initialize views
-        messageRecyclerView = view.findViewById(R.id.messageRecyclerView)
-        messageEditText = view.findViewById(R.id.messageEditText)
-        sendButton = view.findViewById(R.id.sendButton)
-
-        Log.d(TAG, "onCreateView: Views initialized")
-
-        // Setup RecyclerView
-        setupRecyclerView()
-
-        // Setup message sending
-        setupMessageSending()
-
-        // Listen for messages
-        listenForMessages()
-
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_chat, container, false)
+        initializeViews(view)
         return view
     }
 
     private fun initializeViews(view: View) {
         try {
             messageRecyclerView = view.findViewById(R.id.messageRecyclerView)
-                ?: throw NullPointerException("messageRecyclerView not found")
             messageEditText = view.findViewById(R.id.messageEditText)
-                ?: throw NullPointerException("messageEditText not found")
             sendButton = view.findViewById(R.id.sendButton)
-                ?: throw NullPointerException("sendButton not found")
-
             Log.d(TAG, "Views initialized successfully")
         } catch (e: Exception) {
             Log.e(TAG, "Error initializing views: ${e.message}")
@@ -78,15 +67,34 @@ class ChatFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d(TAG, "onViewCreated: Fragment view created")
+
+        viewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
+
+        setupRecyclerView()
+        setupMessageSending()
+        observeMessages()
+
+        chatRoomId?.let { roomId ->
+            otherUserName?.let { userName ->
+                viewModel.initChat(roomId, userName)
+                updateToolbar(userName)
+            }
+        }
+    }
+
+    private fun updateToolbar(recipientUserName: String) {
+        (activity as? AppCompatActivity)?.supportActionBar?.apply {
+            title = recipientUserName
+            setDisplayHomeAsUpEnabled(true)
+        }
     }
 
     private fun setupRecyclerView() {
         Log.d(TAG, "Setting up RecyclerView")
-        messageAdapter = MessageAdapter(messagesList, auth.currentUser?.uid ?: "")
+        messageAdapter = MessageAdapter(mutableListOf(), auth.currentUser?.uid ?: "")
         messageRecyclerView.apply {
             layoutManager = LinearLayoutManager(context).apply {
-                stackFromEnd = true // Scrolls to bottom by default
+                stackFromEnd = true
             }
             adapter = messageAdapter
         }
@@ -97,43 +105,32 @@ class ChatFragment : Fragment() {
         sendButton.setOnClickListener {
             val messageText = messageEditText.text.toString().trim()
             if (messageText.isNotEmpty()) {
-                sendMessage(messageText)
+                viewModel.sendMessage(messageText)
                 messageEditText.text.clear()
             }
         }
     }
 
-    private fun sendMessage(messageText: String) {
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            val message = Message(
-                id = UUID.randomUUID().toString(),
-                text = messageText,
-                senderId = currentUser.uid,
-                senderName = currentUser.displayName ?: "Anonymous",
-                timestamp = System.currentTimeMillis()
-            )
-
-            database.push().setValue(message)
+    private fun observeMessages() {
+        viewModel.messages.observe(viewLifecycleOwner) { messages ->
+            Log.d(TAG, "Observed ${messages.size} messages")
+            messageAdapter.updateMessages(messages)
+            // Scroll to the bottom of the RecyclerView
+            if (messages.isNotEmpty()) {
+                messageRecyclerView.scrollToPosition(messages.size - 1)
+            }
         }
     }
 
-    private fun listenForMessages() {
-        database.orderByChild("timestamp").addChildEventListener(object : ChildEventListener {
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val message = snapshot.getValue(Message::class.java)
-                message?.let {
-                    messagesList.add(it)
-                    messagesList.sortBy { it.timestamp }
-                    messageAdapter.notifyDataSetChanged()
-                    messageRecyclerView.scrollToPosition(messagesList.size - 1)
-                }
-            }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        resetToolbar()
+    }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-            override fun onCancelled(error: DatabaseError) {}
-        })
+    private fun resetToolbar() {
+        (activity as? AppCompatActivity)?.supportActionBar?.apply {
+            title = "CampusThrifts" // Default title or any other default title you prefer
+            setDisplayHomeAsUpEnabled(false)
+        }
     }
 }
