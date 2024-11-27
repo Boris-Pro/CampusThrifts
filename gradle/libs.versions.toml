@@ -57,6 +57,9 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 ucrop = { group = "com.github.yalantis", name = "ucrop", version.ref = "ucrop" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 firebase-dataconnect = { group = "com.google.firebase", name = "firebase-dataconnect", version.ref = "firebaseDataconnect" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
+glide-complier = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
+glide-okhttp3 = { group = "com.github.bumptech.glide", name = "okhttp3-integration", version = "4.15.1"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
