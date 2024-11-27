@@ -9,6 +9,7 @@ val description: String? = null, // Product description
 val imageUrl: String? = null,    // URL of the product image in Firebase Storage
 val category: String? = null,    // Category of the product (Clothes, Furniture, etc.)
 val dateAdded: Long? = null,     // Timestamp when the product was added
-val uid: String? = null          // User ID (UID) of the person who added the product
-
+val userId: String? = null,
+val quantity: Int? = null        // Quantity of the product
 )
+

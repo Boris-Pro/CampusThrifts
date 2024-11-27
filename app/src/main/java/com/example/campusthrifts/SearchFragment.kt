@@ -31,7 +31,7 @@ class SearchFragment : Fragment() {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         // Initialize Firebase Database reference
-        database = FirebaseDatabase.getInstance().getReference("items")
+        database = FirebaseDatabase.getInstance().getReference("products")
 
         // Set up RecyclerView
 
@@ -82,7 +82,9 @@ class SearchFragment : Fragment() {
 
     private fun searchProducts(query: String) {
         val filteredList = productList.filter {
-            it.name?.contains(query, ignoreCase = true) == true
+            // Check if the name or description contains the query (case-insensitive)
+            (it.name?.contains(query, ignoreCase = true) == true) ||
+                    (it.description?.contains(query, ignoreCase = true) == true)
         }
         productAdapter.updateList(filteredList)
     }
@@ -139,6 +141,8 @@ class SearchFragment : Fragment() {
             .addToBackStack(null)
             .commit()
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

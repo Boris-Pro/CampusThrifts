@@ -1,67 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    tools:context=".DashboardFragment">
 
-    <!-- Product Image Section -->
-    <ImageView
-        android:id="@+id/productImageView"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Product Image"
-        android:scaleType="centerCrop"
-        android:src="@drawable/placeholderimage" />
+        android:layout_height="match_parent"
+        android:text="@string/hello_dashboard_fragment"
+        android:textSize="36sp"
+        android:textColor="@color/blue"
+        android:gravity="center" />
 
-    <Button
-        android:id="@+id/selectImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select Product Image"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Product Name Input -->
-    <EditText
-        android:id="@+id/productNameEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Name"
-        android:inputType="text"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Product Description Input -->
-    <EditText
-        android:id="@+id/productDescriptionEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Description"
-        android:inputType="textMultiLine"
-        android:lines="3"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Product Price Input -->
-    <EditText
-        android:id="@+id/productPriceEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Product Price"
-        android:inputType="numberDecimal"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Product Category Dropdown -->
-    <Spinner
-        android:id="@+id/productCategorySpinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp" />
-
-    <!-- Save Product Button -->
-    <Button
-        android:id="@+id/saveProductButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Product" />
-</LinearLayout>
+</FrameLayout>
