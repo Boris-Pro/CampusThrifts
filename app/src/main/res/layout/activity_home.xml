@@ -1,37 +1,78 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
-    <!--  App Bar Layout  -->
-    <com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-        <!--  Toolbar  -->
-        <androidx.appcompat.widget.Toolbar android:id="@+id/toolbar" android:layout_width="match_parent" android:layout_height="?attr/actionBarSize" app:title="Home" app:titleTextColor="@android:color/black" app:navigationIcon="@drawable/placeholderimage" app:contentInsetStart="0dp">
-            <!--  Right-side Icons  -->
-            <LinearLayout android:layout_width="wrap_content" android:layout_height="match_parent" android:orientation="horizontal" android:layout_gravity="end" android:gravity="center_vertical">
-                <!--  Shopping Cart Icon  -->
-<!--                <ImageView android:id="@+id/cartIcon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/placeholderimage" android:padding="8dp" android:contentDescription="@string/cart_icon"/>-->
-                <!--  User Profile Photo  -->
-<!--                <ImageView android:id="@+id/userProfilePhoto" android:layout_width="32dp" android:layout_height="32dp" android:src="@drawable/placeholderimage" android:padding="8dp" android:contentDescription="@string/user_profile_photo" app:layout_collapseMode="pin"/>-->
-            </LinearLayout>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-    <!--  Main Content  -->
-    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" app:layout_behavior="@string/appbar_scrolling_view_behavior">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-            <!--  Discover Section  -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="16dp">
-                <TextView android:id="@+id/discoverLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Discover" android:textSize="24sp" android:textStyle="bold"/>
-                <!--  Search Bar  -->
-                <androidx.appcompat.widget.SearchView android:id="@+id/searchView" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:iconifiedByDefault="false" android:queryHint="Search" android:layout_marginStart="16dp"/>
-            </LinearLayout>
-            <!--  New Collections Section  -->
-            <TextView android:id="@+id/newCollectionsLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="New Collections »" android:textStyle="bold" android:textSize="18sp" android:layout_marginBottom="8dp"/>
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewNewCollections" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:scrollbars="horizontal"/>
-            <!--  Popular This Week Section  -->
-            <TextView android:id="@+id/popularLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Popular This Week »" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="24dp" android:layout_marginBottom="8dp"/>
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewPopular" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:scrollbars="horizontal"/>
-            <!--  Categories Section  -->
-            <TextView android:id="@+id/categoriesLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Categories »" android:textStyle="bold" android:textSize="18sp" android:layout_marginTop="24dp" android:layout_marginBottom="8dp"/>
-            <androidx.recyclerview.widget.RecyclerView android:id="@+id/recyclerViewCategories" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-        </LinearLayout>
-    </ScrollView>
-    <!--  Bottom Navigation  -->
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNavigationView" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" app:menu="@menu/bottom_nav_menu"/>-->
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <!-- Toolbar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        app:title="Home"
+        android:titleTextColor="@android:color/white"
+        app:menu="@menu/toolbar_menu" />
+
+
+    <!-- Banner for Discover Section -->
+    <ImageView
+        android:id="@+id/banner_image"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="16dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placeholderimage"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Popular Items Section -->
+    <TextView
+        android:id="@+id/popular_items_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Popular This Week"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/banner_image"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_items_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/popular_items_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Categories Section -->
+    <TextView
+        android:id="@+id/categories_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Categories"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/popular_items_recyclerview"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categories_recyclerview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/categories_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
