@@ -119,7 +119,8 @@ class AddProductActivity : AppCompatActivity() {
                     userId = FirebaseAuth.getInstance().currentUser?.uid ?: "",
                     quantity = binding.etProductQuantity.text.toString().toInt(),
                     description = binding.etProductDescription.text.toString(),
-                    category = selectedCategory  // Include the category
+                    category = selectedCategory,  // Include the category
+                    dateAdded = System.currentTimeMillis()  // Set the current timestamp
                 )
 
                 // Store the product in the database under the 'products' node
@@ -170,7 +171,8 @@ class AddProductActivity : AppCompatActivity() {
             description = binding.etProductDescription.text.toString(),
             userId = FirebaseAuth.getInstance().currentUser?.uid ?: "",
             imageUrl = existingImageUrl ?: "", // Keep the existing image URL
-            category = binding.productCategorySpinner.selectedItem.toString()  // Update the category
+            category = binding.productCategorySpinner.selectedItem.toString(),  // Update the category
+            dateAdded = existingImageUrl?.let { System.currentTimeMillis() } ?: 0L // Keep the original dateAdded
         )
 
         // Update product details in Firebase
