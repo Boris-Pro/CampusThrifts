@@ -76,6 +76,11 @@ dependencies {
     implementation(libs.ucrop)
     implementation(libs.firebase.dataconnect)
 
+    //Glide dependencies
+    implementation(libs.glide)
+    implementation(libs.glide.complier)
+    implementation(libs.glide.okhttp3)
+
     // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
