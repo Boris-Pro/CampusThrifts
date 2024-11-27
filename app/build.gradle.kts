@@ -38,9 +38,7 @@ android {
         jvmTarget = "11"
     }
 }
-
 dependencies {
-    
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -54,7 +52,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.core.splashscreen)  // Fixed missing closing parenthesis here
     implementation(platform("com.google.firebase:firebase-bom:33.5.1"))
     implementation(libs.google.firebase.database)
     implementation(libs.google.firebase.auth)

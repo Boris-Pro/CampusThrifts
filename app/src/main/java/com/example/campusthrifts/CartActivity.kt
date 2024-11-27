@@ -16,9 +16,17 @@ class CartActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
+        val userId =intent.getStringExtra("USER_ID")
+
         if (savedInstanceState == null) {
+            val cartFragment = CartFragment().apply {
+                arguments = Bundle().apply {
+                    putString("USER_ID", userId)
+                }
+            }
+
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, CartFragment())
+                .replace(R.id.fragment_container, cartFragment)
                 .commit()
         }
     }

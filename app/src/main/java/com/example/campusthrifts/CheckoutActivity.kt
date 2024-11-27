@@ -37,6 +37,7 @@ class CheckoutActivity : AppCompatActivity() {
 
 
         proceedButton.setOnClickListener {
+
             val selectedPaymentMethod = when (paymentMethodsGroup.checkedRadioButtonId) {
                 R.id.radio_cash -> "Cash"
                 R.id.radio_card -> "Card"

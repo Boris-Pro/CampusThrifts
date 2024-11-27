@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.os.Bundle
+
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -34,36 +35,36 @@ class CartAdapter(
         init {
 
             btnIncrease.setOnClickListener {
-                val cartItem = cartItems[adapterPosition]
+                val cartItem = cartItems[bindingAdapterPosition]
                 cartItem.quantity++
                 itemQuantity.setText(cartItem.quantity.toString())
-                itemTotalPrice.text = "$${cartItem.getTotalPrice()}"
                 onQuantityChanged(cartItem)
             }
 
-
             btnDecrease.setOnClickListener {
-                val cartItem = cartItems[adapterPosition]
+                val cartItem = cartItems[bindingAdapterPosition]
                 if (cartItem.quantity > 1) {
                     cartItem.quantity--
                     itemQuantity.setText(cartItem.quantity.toString())
                     itemTotalPrice.text = "$${cartItem.getTotalPrice()}"
                     onQuantityChanged(cartItem)
                 }
+
+
             }
 
             // Remove item from cart
             btnRemove.setOnClickListener {
-                val cartItem = cartItems[adapterPosition]
-                cartItems.removeAt(position)
-                onItemRemoved(cartItem)
+                val cartItem = cartItems[bindingAdapterPosition]
+                //Toast.makeText(itemView.context, "Cart Item ID: ${cartItem.id}", Toast.LENGTH_SHORT).show()
+                onItemRemoved(cartItem) // Notify the activity to remove the item from Firebase
             }
 
 
             itemQuantity.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                     val newQuantity = s.toString().toIntOrNull() ?: 1
-                    val cartItem = cartItems[adapterPosition]
+                    val cartItem = cartItems[bindingAdapterPosition]
                     if (cartItem.quantity != newQuantity) {
                         cartItem.quantity = newQuantity
                         onQuantityChanged(cartItem)
@@ -93,6 +94,5 @@ class CartAdapter(
 
         holder.itemQuantity.setSelection(holder.itemQuantity.text.length)
     }
-
     override fun getItemCount(): Int = cartItems.size
 }
