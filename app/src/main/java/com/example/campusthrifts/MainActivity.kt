@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
+import android.widget.Toast.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -35,9 +36,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (isGranted) {
-            Toast.makeText(this, "Notification Permission Granted", Toast.LENGTH_SHORT).show()
+            makeText(this, "Notification Permission Granted", LENGTH_SHORT).show()
         } else {
-            Toast.makeText(this, "Notification Permission Denied", Toast.LENGTH_SHORT).show()
+            makeText(this, "Notification Permission Denied", LENGTH_SHORT).show()
         }
     }
 
@@ -99,7 +100,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     userEmailTextView.text = user?.email ?: "user@example.com"
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this, "Failed to load user data", Toast.LENGTH_SHORT).show()
+                    makeText(this, "Failed to load user data", LENGTH_SHORT).show()
                 }
         }
     }
@@ -151,9 +152,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
             supportFragmentManager.backStackEntryCount > 1 -> {
                 supportFragmentManager.popBackStack()
+                resetToolbarIfNecessary()
             }
             else -> {
                 super.onBackPressed()
+            }
+        }
+    }
+
+    private fun resetToolbarIfNecessary() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if (currentFragment !is ChatFragment) {
+            (this as? AppCompatActivity)?.supportActionBar?.apply {
+                title = "CampusThrifts" // Default title or any other default title you prefer
+                setDisplayHomeAsUpEnabled(false)
             }
         }
     }
@@ -181,7 +193,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun getChatRoomId(uid1: String, uid2: String): String {
         return if (uid1 < uid2) "${uid1}_${uid2}" else "${uid2}_${uid1}"
     }
-
 
     private fun askNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -211,7 +222,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 dialog.dismiss()
             }
             .setNegativeButton("Deny") { dialog, _ ->
-                Toast.makeText(this, "Notifications will be disabled.", Toast.LENGTH_SHORT).show()
+                makeText(this, "Notifications will be disabled.", LENGTH_SHORT).show()
                 dialog.dismiss()
             }
             .create()
@@ -233,24 +244,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun sendRegistrationTokenToServer(token: String?) {
         // TODO: Implement the logic to send the token to your app server.
-        // This could involve making a network request using Retrofit, Volley, etc.
-        // Example using Retrofit (assuming you have an ApiService defined):
-        /*
-        if (token != null) {
-            CoroutineScope(Dispatchers.IO).launch {
-                try {
-                    val response = RetrofitInstance.api.sendTokenToServer(TokenRequest(token))
-                    if (response.isSuccessful) {
-                        Log.d("MainActivity", "Token sent to server successfully.")
-                    } else {
-                        Log.e("MainActivity", "Failed to send token to server.")
-                    }
-                } catch (e: Exception) {
-                    Log.e("MainActivity", "Error sending token to server: ${e.message}")
-                }
-            }
-        }
-        */
         Log.d("MainActivity", "sendRegistrationTokenToServer($token)")
     }
 }

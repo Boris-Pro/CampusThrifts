@@ -1,7 +1,6 @@
-// Message.kt
 package com.example.campusthrifts
 
-data class Message(
+data class ChatMessage(
     val id: String = "",
     val text: String = "",
     val senderId: String = "",

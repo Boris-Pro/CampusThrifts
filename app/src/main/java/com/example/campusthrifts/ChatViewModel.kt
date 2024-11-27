@@ -1,18 +1,17 @@
-import android.os.Message
+// ChatViewModel.kt
+package com.example.campusthrifts
+
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.util.UUID
 
 class ChatViewModel : ViewModel() {
-    private val _messages = MutableLiveData<List<Message>>()
-    val messages: LiveData<List<Message>> = _messages
+    private val _messages = MutableLiveData<List<ChatMessage>>()
+    val messages: LiveData<List<ChatMessage>> = _messages
 
     private lateinit var chatRoomId: String
     private lateinit var database: DatabaseReference
@@ -20,16 +19,38 @@ class ChatViewModel : ViewModel() {
     fun initChat(chatRoomId: String, otherUserName: String) {
         this.chatRoomId = chatRoomId
         database = FirebaseDatabase.getInstance().reference.child("chatRooms").child(chatRoomId).child("messages")
-        listenForMessages()
+        fetchMessages()
+        listenForNewMessages()
     }
 
-    private fun listenForMessages() {
+    private fun fetchMessages() {
+        database.orderByKey().addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val messagesList = mutableListOf<ChatMessage>()
+                for (childSnapshot in snapshot.children) {
+                    val message = childSnapshot.getValue(ChatMessage::class.java)
+                    message?.let {
+                        messagesList.add(it)
+                    }
+                }
+                Log.d("ChatViewModel", "Fetched ${messagesList.size} messages")
+                _messages.postValue(messagesList)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("ChatViewModel", "Failed to fetch messages: ${error.message}")
+            }
+        })
+    }
+
+    private fun listenForNewMessages() {
         database.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
-                val message = snapshot.getValue(Message::class.java)
+                val message = snapshot.getValue(ChatMessage::class.java)
                 message?.let {
                     val currentList = _messages.value?.toMutableList() ?: mutableListOf()
                     currentList.add(it)
+                    Log.d("ChatViewModel", "New message added: ${it.text}")
                     _messages.postValue(currentList)
                 }
             }
@@ -37,14 +58,16 @@ class ChatViewModel : ViewModel() {
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
             override fun onChildRemoved(snapshot: DataSnapshot) {}
             override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
-            override fun onCancelled(error: DatabaseError) {}
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("ChatViewModel", "Failed to listen for new messages: ${error.message}")
+            }
         })
     }
 
     fun sendMessage(messageText: String) {
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
-            val message = com.example.campusthrifts.Message(
+            val message = ChatMessage(
                 id = UUID.randomUUID().toString(),
                 text = messageText,
                 senderId = currentUser.uid,

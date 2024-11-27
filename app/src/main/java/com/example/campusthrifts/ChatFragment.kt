@@ -1,14 +1,14 @@
+// ChatFragment.kt
 package com.example.campusthrifts
 
-import ChatViewModel
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -77,14 +77,14 @@ class ChatFragment : Fragment() {
         chatRoomId?.let { roomId ->
             otherUserName?.let { userName ->
                 viewModel.initChat(roomId, userName)
-                updateToolbar()
+                updateToolbar(userName)
             }
         }
     }
 
-    private fun updateToolbar() {
+    private fun updateToolbar(recipientUserName: String) {
         (activity as? AppCompatActivity)?.supportActionBar?.apply {
-            title = otherUserName
+            title = recipientUserName
             setDisplayHomeAsUpEnabled(true)
         }
     }
@@ -113,8 +113,24 @@ class ChatFragment : Fragment() {
 
     private fun observeMessages() {
         viewModel.messages.observe(viewLifecycleOwner) { messages ->
-            messageAdapter.updateMessages(messages as List<Message>)
-            messageRecyclerView.scrollToPosition(messages.size - 1)
+            Log.d(TAG, "Observed ${messages.size} messages")
+            messageAdapter.updateMessages(messages)
+            // Scroll to the bottom of the RecyclerView
+            if (messages.isNotEmpty()) {
+                messageRecyclerView.scrollToPosition(messages.size - 1)
+            }
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        resetToolbar()
+    }
+
+    private fun resetToolbar() {
+        (activity as? AppCompatActivity)?.supportActionBar?.apply {
+            title = "CampusThrifts" // Default title or any other default title you prefer
+            setDisplayHomeAsUpEnabled(false)
         }
     }
 }
