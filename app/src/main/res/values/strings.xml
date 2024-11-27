@@ -55,4 +55,25 @@
     <string name="msg_token_fmt">FCM Registration token: %1$s</string>
     <string name="type_message_hint">Type a message...</string>
     <string name="send_button">Send</string>
+    <!-- Sell An Item Section -->
+    <string name="sell_an_item">Sell An Item</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="size">SIZE</string>
+    <string name="category">CATEGORY</string>
+    <string name="xxs">XXS</string>
+    <string name="xs">XS</string>
+    <string name="s">S</string>
+    <string name="m">M</string>
+    <string name="l">L</string>
+    <string name="xl">XL</string>
+    <string name="clothes">Clothes</string>
+    <string name="electronics">Electronics</string>
+    <string name="accessories">Accessories</string>
+    <string name="books">Books</string>
+    <string name="shoes">Shoes</string>
+    <string name="price_hint">$0.00</string>
+    <string name="upload">Upload</string>
+    <string name="item_added_message">Item added successfully!</string>
+
+
 </resources>
