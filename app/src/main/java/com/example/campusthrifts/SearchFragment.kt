@@ -35,7 +35,9 @@ class SearchFragment : Fragment() {
 
         // Set up RecyclerView
 
-        productAdapter = ProductAdapter(productList)
+        productAdapter = ProductAdapter(productList) { product ->
+            onProductClick(product)  // Handle item click
+        }
         binding.productsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.productsRecyclerView.adapter = productAdapter
 
@@ -122,6 +124,20 @@ class SearchFragment : Fragment() {
     private fun filterByCategory(category: String) {
         val filteredList = productList.filter { it.category == category }
         productAdapter.updateList(filteredList)
+    }
+
+    private fun onProductClick(product: Products) {
+        // Handle the product item click and navigate to ProductDetailFragment
+        val fragment = ProductDetailFragment()
+        val bundle = Bundle()
+        bundle.putString("productId", product.id)  // Pass the product ID or other relevant data
+        Log.d("SearchFragment", "Product ID: ${product.id}")
+        fragment.arguments = bundle
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onDestroyView() {

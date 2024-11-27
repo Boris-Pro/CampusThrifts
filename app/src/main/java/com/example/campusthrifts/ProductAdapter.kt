@@ -7,43 +7,47 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.campusthrifts.databinding.FragmentSearchProductViewBinding
 
-class ProductAdapter(private var productList: List<Products>) :
-    RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
+class ProductAdapter(
+    private var products: List<Products>,
+    private val onItemClick: (Products) -> Unit // Added click listener
+) : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
-    fun updateList(newList: List<Products>) {
-        productList = newList
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_search_product_view, parent, false)
-        return ProductViewHolder(view)
+        val binding = FragmentSearchProductViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ProductViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        val product = productList[position]
+        val product = products[position]
         holder.bind(product)
     }
 
-    override fun getItemCount(): Int = productList.size
+    override fun getItemCount(): Int = products.size
 
-    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val productImage: ImageView = itemView.findViewById(R.id.productImage)
-        private val productName: TextView = itemView.findViewById(R.id.productName)
-        private val productPrice: TextView = itemView.findViewById(R.id.productPrice)
+    fun updateList(newProducts: List<Products>) {
+        products = newProducts
+        notifyDataSetChanged()
+    }
 
+    inner class ProductViewHolder(private val binding: FragmentSearchProductViewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(product: Products) {
-            productName.text = product.name
-            productPrice.text = "Price: $${product.price}"
+            binding.productName.text = product.name
+            binding.productPrice.text = "Price: $${product.price}"
 
-
+            // Load the product image (if any) using Glide or similar image loading library
             Glide.with(itemView.context)
                 .load(product.imageUrl)
-                .placeholder(R.drawable.placeholderimage)
-                .into(productImage)
+                .into(binding.productImage)
+
+            // Set the click listener
+            itemView.setOnClickListener {
+                onItemClick(product) // Trigger the click listener
+            }
         }
     }
 }
