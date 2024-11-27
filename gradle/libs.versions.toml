@@ -1,5 +1,6 @@
 [versions]
 agp = "8.7.1"
+androidxCardview = "1.0.0"
 compiler = "4.15.1"
 coreSplashscreen = "1.0.1"
 credentials = "<latest version>"
@@ -23,6 +24,7 @@ firebaseStorage = "21.0.1"
 recyclerview = "1.3.2"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "androidxCardview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }

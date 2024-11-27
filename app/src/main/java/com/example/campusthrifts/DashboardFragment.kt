@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener
 class DashboardFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var productAdapter: ProductAdapter
+    private lateinit var productAdapter: DashboardProductAdapter
     private lateinit var productList: MutableList<Product>
     private lateinit var database: DatabaseReference
 
@@ -39,7 +39,7 @@ class DashboardFragment : Fragment() {
         database = FirebaseDatabase.getInstance().reference.child("products")
 
         productList = mutableListOf()
-        productAdapter = ProductAdapter(productList, ::onEditClick, ::onDeleteClick)
+        productAdapter = DashboardProductAdapter(productList, ::onEditClick, ::onDeleteClick, ::onViewDetailClick)
         recyclerView.adapter = productAdapter
 
         fetchProducts()
@@ -121,5 +121,19 @@ class DashboardFragment : Fragment() {
                 Toast.makeText(requireContext(), "Failed to delete product", Toast.LENGTH_SHORT).show()
             }
     }
+
+    // View Product Details
+    private fun onViewDetailClick(product: Product) {
+        val intent = Intent(context, DashboardProductDetailedActivity::class.java).apply {
+            putExtra("productId", product.id)
+            putExtra("productName", product.name)
+            putExtra("productPrice", product.price)
+            putExtra("productQuantity", product.quantity)
+            putExtra("productDescription", product.description)
+            putExtra("productImageUrl", product.imageUrl)
+        }
+        startActivity(intent)
+    }
 }
+
 

@@ -31,7 +31,7 @@
             android:name=".CartActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductDetailedActivity"
+            android:name=".DashboardProductDetailedActivity"
             android:exported="false" />
         <activity
             android:name=".ProductActivity"

@@ -4,7 +4,7 @@
     <string name="close_nav">Close Navigation Drawer</string>
     <string name="h_login">Log In</string>
     <string name="h_signup">Sign Up</string>
-    <string name="h_addproduct">Add Product</string>
+    <string name="h_addproduct">Product</string>
     <string name="password">Password</string>
     <string name="sign_in">Sign In</string>
     <string name="log_out">LOGOUT</string>
@@ -53,7 +53,7 @@
     <string name="save_changes">Save Changes</string>
     <string name="product_image">Product Image</string>
     <string name="product_name">Product Name</string>
-    <string name="product_price">Product Price</string>
+    <string name="product_price">Price: $%.2f</string>
     <string name="edit">Edit</string>
     <string name="delete_product">Delete Product</string>
     <string name="listed_products">Listed Products</string>
@@ -68,4 +68,10 @@
     <string name="quantity">Quantity</string>
     <string name="enter_product_price">Enter Product Price</string>
     <string name="enter_product_name">Enter Product Name</string>
+    <string name="view_details">View Details</string>
+    <string name="product_quantity">Quantity: %d</string>
+    <string name="back">Back</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_details">Product details</string>
+    <string name="category">Category</string>
 </resources>

@@ -1,9 +1,11 @@
 package com.example.campusthrifts
 
+import android.R
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.campusthrifts.databinding.ActivityAddProductBinding
@@ -24,6 +26,8 @@ class AddProductActivity : AppCompatActivity() {
     private var isEditing = false
     private var existingImageUrl: String? = null
 
+    private val categories = listOf("Electronics", "Clothing", "Books", "Furniture", "Other")  // Example categories
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,6 +38,11 @@ class AddProductActivity : AppCompatActivity() {
         // Initialize Firebase instances
         database = FirebaseDatabase.getInstance().reference
         storageReference = FirebaseStorage.getInstance().reference
+
+        // Set up the category spinner with the list of categories
+        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, categories)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.productCategorySpinner.adapter = adapter
 
         // Get product details from intent if available (for editing)
         val productId = intent.getStringExtra("productId")
@@ -94,8 +103,12 @@ class AddProductActivity : AppCompatActivity() {
 
         filePath?.putFile(imageUri!!)?.addOnSuccessListener {
             filePath.downloadUrl.addOnSuccessListener { uri ->
+
                 // Get the download URL of the image
                 val imageUrl = uri.toString()
+
+                // Get selected category from the spinner
+                val selectedCategory = binding.productCategorySpinner.selectedItem.toString()
 
                 // Create a product object and save it to the database
                 val product = Product(
@@ -105,7 +118,8 @@ class AddProductActivity : AppCompatActivity() {
                     imageUrl = imageUrl,
                     userId = FirebaseAuth.getInstance().currentUser?.uid ?: "",
                     quantity = binding.etProductQuantity.text.toString().toInt(),
-                    description = binding.etProductDescription.text.toString()
+                    description = binding.etProductDescription.text.toString(),
+                    category = selectedCategory  // Include the category
                 )
 
                 // Store the product in the database under the 'products' node
@@ -138,6 +152,10 @@ class AddProductActivity : AppCompatActivity() {
                 Glide.with(this)
                     .load(product.imageUrl)
                     .into(binding.ivSelectedImage) // Display existing image
+
+                // Set the selected category in the spinner
+                val categoryPosition = categories.indexOf(product.category)
+                binding.productCategorySpinner.setSelection(categoryPosition)
             }
         }
     }
@@ -151,7 +169,8 @@ class AddProductActivity : AppCompatActivity() {
             quantity = binding.etProductQuantity.text.toString().toInt(),
             description = binding.etProductDescription.text.toString(),
             userId = FirebaseAuth.getInstance().currentUser?.uid ?: "",
-            imageUrl = existingImageUrl ?: "" // Keep the existing image URL
+            imageUrl = existingImageUrl ?: "", // Keep the existing image URL
+            category = binding.productCategorySpinner.selectedItem.toString()  // Update the category
         )
 
         // Update product details in Firebase
