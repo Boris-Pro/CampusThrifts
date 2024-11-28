@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.campusthrifts.databinding.FragmentProductDetailBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -48,6 +50,14 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
         // Load the current product details if productId is not null
         if (productId != null) {
             loadProductDetails(productId!!)
+        }
+
+        // Set up Add to Cart button listener
+        binding.addToCartButton.setOnClickListener {
+            Log.d("AddToCart", "Add to Cart button clicked")
+            if (productId != null) {
+                addToCart(productId!!)
+            }
         }
 
         return binding.root
@@ -102,10 +112,7 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
                         // Now, load recommended products based on this product's category
                         loadRecommendedProducts(it.category)
 
-                        // Add to Cart button logic
-                        binding.addCartButton.setOnClickListener {
-                            // Handle Add to Cart functionality here
-                        }
+
                     }
                 }
             }
@@ -158,5 +165,39 @@ class ProductDetailFragment : Fragment(R.layout.fragment_product_detail) {
             .addToBackStack(null)
             .commit()
     }
+
+    // Add product to the user's cart
+    private fun addToCart(productId: String) {
+        // Get the current user's ID (assuming FirebaseAuth is being used)
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        Log.d("AddToCart", "User ID: $userId")
+
+        // Get the selected quantity from the spinner
+        val selectedQuantity = binding.productQuantitySpinner.selectedItem as? Int ?: 1
+        Log.d("AddToCart", "Selected Quantity: $selectedQuantity")
+
+        // Create a CartItem object for the selected product
+        val cartItem = CartItem(
+            productId = productId,
+            name = product.name,
+            price = product.price,
+            imageUrl = product.imageUrl,
+            quantity = selectedQuantity // Use the selected quantity here
+        )
+
+        // Get a reference to the cart items for this user
+        val cartRef = FirebaseDatabase.getInstance().getReference("cartItems").child(userId)
+
+        // Add the product to the cart (using the productId as the key)
+        cartRef.child(productId).setValue(cartItem).addOnCompleteListener {
+            if (it.isSuccessful) {
+                Toast.makeText(requireContext(), "Product added to cart", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Failed to add product to cart", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 }
+
 
