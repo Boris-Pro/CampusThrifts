@@ -111,7 +111,7 @@ class SearchFragment : Fragment() {
 
     private fun showCategorySelection() {
         val categories = listOf(
-            "Clothes", "Shoes", "Furniture", "Electronics", "Books", "Appliances", "Other"
+            "Clothing", "Furniture", "Electronics", "Books", "Other"
         )
         val popupMenu = PopupMenu(requireContext(), binding.categoryBtn)
         categories.forEach { popupMenu.menu.add(it) }

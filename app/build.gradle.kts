@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
+
 }
 
 android {
@@ -100,5 +101,6 @@ dependencies {
     implementation (libs.glide.v4160)
     annotationProcessor (libs.compiler)
     implementation (libs.material.v190)
+    implementation (libs.firebase.messaging.v2310)
 
 }
