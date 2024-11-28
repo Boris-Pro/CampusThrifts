@@ -59,7 +59,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_dashboard_fragment">Dashboard fragment</string>
     <string name="hello_settings_fragment">Settings fragment</string>
-<!-- TODO: Remove or change this placeholder text -->
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_about_fragment">About fragment</string>
     <string name="profile_settings">Profile Settings</string>
     <string name="back_button_desc">Back Button</string>
@@ -81,5 +81,38 @@
 
     <string name="type_message_hint">Type a message...</string>
     <string name="send_button">Send</string>
+
+    <string name="additional_field_hint">Additional Field</string>
+    <string name="gender_label">Gender</string>
+    <string name="male_option">Male</string>
+    <string name="female_option">Female</string>
+    <string name="other_option">Other</string>
+
+    <string name="product_image">Product Image</string>
+    <string name="product_name">Product Name</string>
+    <string name="product_price">Price: $%.2f</string>
+    <string name="edit">Edit</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="listed_products">Listed Products</string>
+    <string name="add_product">Add Product</string>
+    <string name="add_a_new_product">Add a new product</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="save">Save</string>
+    <string name="selected_image">Selected Image</string>
+    <string name="select_product_image">Select Product Image</string>
+    <string name="description">Description</string>
+    <string name="quantity">Quantity</string>
+    <string name="enter_product_price">Enter Product Price</string>
+    <string name="enter_product_name">Enter Product Name</string>
+    <string name="view_details">View Details</string>
+    <string name="product_quantity">Quantity: %d</string>
+    <string name="back">Back</string>
+    <string name="product_description">Product Description</string>
+    <string name="product_details">Product details</string>
+    <string name="category">Category</string>
+    <string name="h_addproduct">Product\n</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="settings">Settings</string>
 
 </resources>

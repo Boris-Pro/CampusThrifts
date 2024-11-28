@@ -1,8 +1,9 @@
+// App-level build.gradle.kts
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
-    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -31,30 +32,18 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
-
     kotlinOptions {
-        jvmTarget = "17"
-    }
-
-    kapt {
-        javacOptions {
-            option("-source", "17")
-            option("-target", "17")
-        }
+        jvmTarget = "11"
     }
 }
 
 dependencies {
-    // Firebase and other dependencies
+    // Import the BoM for the Firebase platform
     implementation(platform(libs.google.firebase.bom))
-    implementation("com.github.bumptech.glide:glide:4.15.1")
-    kapt("com.github.bumptech.glide:compiler:4.15.1")
-    implementation("com.squareup.picasso:picasso:2.71828")
 
     // Firebase dependencies managed by BoM (no version specified)
     implementation(libs.firebase.database.ktx)
@@ -86,12 +75,22 @@ dependencies {
     // Dependency for image cropping with uCrop
     implementation(libs.ucrop)
     implementation(libs.firebase.dataconnect)
+    implementation(libs.androidx.lifecycle.viewmodel.android)
+
+    //Glide dependencies
+    implementation(libs.glide)
+    implementation(libs.glide.complier)
+    implementation(libs.glide.okhttp3)
 
     // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.androidx.core.splashscreen)
+
+    implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     // Image loading dependency
     implementation("io.coil-kt:coil:2.0.0")
@@ -101,4 +100,10 @@ dependencies {
 
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation(libs.androidx.recyclerview)
+    implementation (libs.androidx.cardview)
+    implementation (libs.glide.v4160)
+    annotationProcessor (libs.compiler)
+    implementation (libs.material.v190)
+
 }

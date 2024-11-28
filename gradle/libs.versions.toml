@@ -1,11 +1,14 @@
 [versions]
-agp = "8.6.1"
+agp = "8.7.1"
+androidxCardview = "1.0.0"
+compiler = "4.15.1"
 coreSplashscreen = "1.0.1"
 credentials = "1.3.0" # Replace with actual latest version
 firebaseBom = "33.5.1"
 firebaseBomVersion = "32.0.0"
 firebaseUiAuth = "8.0.2"
 firebaseUiDatabase = "8.0.2"
+glideVersion = "4.16.0"
 googleid = "1.0.0"    # Replace with actual latest version
 kotlin = "1.8.0"     # Use a stable Kotlin version
 coreKtx = "1.13.1"
@@ -19,6 +22,8 @@ constraintlayout = "2.1.4"
 firebaseDatabase = "21.0.0"
 firebaseAuth = "23.0.0"
 firebaseFirestoreKtx = "25.1.0"
+materialVersion = "1.9.0"
+recyclerview = "1.3.2"
 playServicesAuth = "21.2.0"
 firebaseStorage = "21.0.1"
 coil = "2.4.0"
@@ -26,8 +31,12 @@ ucrop = "2.2.8"
 firebaseMessaging = "24.0.3"         # Latest stable version
 googleServices = "4.4.2"
 firebaseDataconnect = "16.0.0-beta03"
+lifecycleViewmodelAndroid = "2.8.7"
 
 [libraries]
+androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "androidxCardview" }
+compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "compiler" }
+androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
@@ -39,6 +48,7 @@ firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx" }
 firebase-ui-auth = { module = "com.firebaseui:firebase-ui-auth", version.ref = "firebaseUiAuth" }
 firebase-ui-database = { module = "com.firebaseui:firebase-ui-database", version.ref = "firebaseUiDatabase" }
 firebase-ui-firestore = { module = "com.firebaseui:firebase-ui-firestore", version.ref = "firebaseUiAuth" }
+glide-v4160 = { module = "com.github.bumptech.glide:glide", version.ref = "glideVersion" }
 google-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBomVersion" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -51,12 +61,17 @@ androidx-constraintlayout = { group = "androidx.constraintlayout", name = "const
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
+material-v190 = { module = "com.google.android.material:material", version.ref = "materialVersion" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 ucrop = { group = "com.github.yalantis", name = "ucrop", version.ref = "ucrop" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 firebase-dataconnect = { group = "com.google.firebase", name = "firebase-dataconnect", version.ref = "firebaseDataconnect" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
+glide-complier = { group = "com.github.bumptech.glide", name = "glide", version = "4.15.1"}
+glide-okhttp3 = { group = "com.github.bumptech.glide", name = "okhttp3-integration", version = "4.15.1"}
+androidx-lifecycle-viewmodel-android = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-android", version.ref = "lifecycleViewmodelAndroid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
