@@ -16,15 +16,7 @@
     <color name="purple">#9C27B0</color>
     <color name="black">#000000</color>
     <color name="brown">#6B4D57</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="yellow">#FFFC00</color>
-    <color name="purple">#FF800080</color>
-    <color name="blue">#1A9DF1</color>
     <color name="green">#dbe9dd</color>
-    <color name="colorAccent">#d9873f</color>
-    <color name="primaryColor">#C9BAE5</color>
-    <color name="secondaryColor">#ae60db</color>
     <color name="gray">#F2F2F2</color>
 
 </resources>
