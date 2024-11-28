@@ -13,65 +13,62 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Main Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
+            android:background="@color/white"
             android:elevation="4dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            android:theme="@style/ThemeOverlay.AppCompat.Light" />
 
+
+        <!-- FrameLayout for Fragments, should be BELOW the Toolbar -->
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar" />
 
-
+        <!-- Bottom Navigation Bar -->
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
 
             <com.google.android.material.bottomappbar.BottomAppBar
+                android:id="@+id/bottomAppBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/bottomAppBar"
                 android:layout_gravity="bottom"
-                android:backgroundTint="@color/blue">
+                android:backgroundTint="@color/white">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottom_navigation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/bottom_navigation"
                     app:labelVisibilityMode="labeled"
                     app:menu="@menu/bottom_menu"
                     android:background="@android:color/transparent"
-                    app:itemIconTint="@color/white"
-                    app:itemTextColor="@color/white"
-                    app:itemIconSize="30dp"/>
-
+                    app:itemIconTint="@color/brown"
+                    app:itemTextColor="@color/brown"
+                    app:itemIconSize="30dp" />
 
             </com.google.android.material.bottomappbar.BottomAppBar>
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-
-
-
-
-
     </RelativeLayout>
 
+    <!-- Navigation Drawer -->
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_drawer"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/navigation_drawer"
         android:layout_gravity="start"
         app:itemIconTint="@color/blue"
         app:itemTextColor="@color/blue"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/nav_menu"/>
-
-
+        app:menu="@menu/nav_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

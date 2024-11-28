@@ -8,5 +8,8 @@ data class Item(
     val imageUrl: String = "",
     val category: String = "",
     val uid: String = "",
-    val dateAdded: Long = 0L
+    val dateAdded: Long = 0L,
+    var isFavorited: Boolean = false,
+    var popularityScore: Int = 0
+
 )

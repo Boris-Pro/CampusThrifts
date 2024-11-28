@@ -45,6 +45,10 @@
     <string name="categories_header">Categories</string>
     <string name="categories_arrow_desc">View more categories</string>
     <string name="all_button">All</string>
+    <string name="title_add_item">Add Item</string>
+    <string name="title_favorite_item">Favorites</string>
+    <string name="item_price_placeholder">$%1$d</string>
+
     <string name="client_id">913089159482-au4jrja138iqb1b4pntvbq0rgpua80fa.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_home_fragment">Home fragment</string>

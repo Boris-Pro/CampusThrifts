@@ -1,10 +1,8 @@
-// App-level build.gradle.kts
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.services)
-    id("org.jetbrains.kotlin.kapt") // Adding kapt plugin to apply annotation processing
+    id("org.jetbrains.kotlin.kapt")
 }
 
 android {
@@ -52,10 +50,11 @@ android {
 }
 
 dependencies {
-    // Import the BoM for the Firebase platform
+    // Firebase and other dependencies
     implementation(platform(libs.google.firebase.bom))
     implementation("com.github.bumptech.glide:glide:4.15.1")
     kapt("com.github.bumptech.glide:compiler:4.15.1")
+    implementation("com.squareup.picasso:picasso:2.71828")
 
     // Firebase dependencies managed by BoM (no version specified)
     implementation(libs.firebase.database.ktx)

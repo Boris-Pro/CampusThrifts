@@ -11,63 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Custom Toolbar -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/home_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            android:elevation="4dp"
-            app:title="Home"
-            app:titleTextColor="@android:color/white"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/hamburger_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_home"
-
-                android:padding="8dp"
-                android:layout_gravity="start|center_vertical" />
-
-            <TextView
-                android:id="@+id/home_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/home_title"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_gravity="center" />
-
-            <ImageView
-                android:id="@+id/home_cart_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_cart"
-                android:contentDescription="@string/cart_icon_desc"
-                android:padding="8dp"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginEnd="56dp" />
-
-            <ImageView
-                android:id="@+id/home_profile_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_person"
-                android:contentDescription="@string/profile_icon_desc"
-                android:padding="8dp"
-                android:layout_gravity="end|center_vertical" />
-        </androidx.appcompat.widget.Toolbar>
-
-
         <!-- Scrollable Content -->
         <ScrollView
             android:id="@+id/home_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/home_toolbar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -106,6 +54,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp">
 
+                    <!-- Replaced SliderView with an ImageView -->
+                    <ImageView
+                        android:id="@+id/home_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/welcome_image" />
+
                     <TextView
                         android:id="@+id/welcome_text"
                         android:layout_width="wrap_content"
@@ -135,7 +91,8 @@
                         android:text="@string/buy_now"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="16dp"
-                        android:layout_marginStart="16dp" />
+                        android:layout_marginStart="16dp"
+                        android:backgroundTint="@android:color/black" />
 
                 </RelativeLayout>
 
@@ -171,7 +128,9 @@
                     android:id="@+id/popular_items_recyclerview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
+                    android:layout_marginTop="8dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"/>
 
                 <!-- Categories Section -->
                 <LinearLayout
@@ -204,7 +163,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/all_button"
-                        android:layout_marginStart="8dp" />
+                        android:layout_marginStart="8dp"
+                        android:backgroundTint="@android:color/black" />
 
                 </LinearLayout>
 
