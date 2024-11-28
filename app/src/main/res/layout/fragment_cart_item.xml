@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_marginBottom="8dp">
+
+    <!-- Product Image -->
+    <ImageView
+        android:id="@+id/cartItemImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/placeholderimage"
+        android:scaleType="centerCrop"
+        android:contentDescription="Product Image"/>
+
+    <!-- Product Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Product Name -->
+        <TextView
+            android:id="@+id/cartItemName"
+            android:text="Product Name"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_height="40dp"
+            android:layout_width="140dp"/>
+
+        <!-- Product Quantity -->
+        <TextView
+            android:id="@+id/cartItemQuantity"
+            android:text="Quantity: 1"
+            android:textSize="16dp"
+            android:textColor="#555555"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_height="20dp"
+            android:layout_width="wrap_content"/>
+
+        <!-- Product Price -->
+        <TextView
+            android:id="@+id/cartItemPrice"
+            android:text="Price: $0.00"
+            android:textSize="20dp"
+            android:textColor="#555555"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_height="20dp"
+            android:layout_width="70dp"/>
+
+    </LinearLayout>
+
+    <!-- Delete Button -->
+    <ImageView
+        android:id="@+id/cartDeleteButton"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="Delete Item"
+        android:padding="8dp"
+        app:srcCompat="@drawable/ic_delete2" />
+
+</LinearLayout>
