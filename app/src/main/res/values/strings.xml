@@ -87,4 +87,6 @@
     <string name="product_details">Product details</string>
     <string name="category">Category</string>
     <string name="h_addproduct">Product\n</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="settings">Settings</string>
 </resources>

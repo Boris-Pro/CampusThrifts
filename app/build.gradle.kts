@@ -99,5 +99,6 @@ dependencies {
     implementation (libs.androidx.cardview)
     implementation (libs.glide.v4160)
     annotationProcessor (libs.compiler)
+    implementation (libs.material.v190)
 
 }
