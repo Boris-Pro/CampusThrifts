@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment
 import com.example.campusthrifts.databinding.ActivityMainBinding
 import com.example.campusthrifts.fragments.AddItemFragment
 import com.example.campusthrifts.fragments.FavoriteFragment
-import com.example.campusthrifts.HomeFragment
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
