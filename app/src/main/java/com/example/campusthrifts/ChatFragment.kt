@@ -114,6 +114,9 @@ class ChatFragment : Fragment() {
     private fun observeMessages() {
         viewModel.messages.observe(viewLifecycleOwner) { messages ->
             Log.d(TAG, "Observed ${messages.size} messages")
+            messages.forEachIndexed { index, msg ->
+                Log.d(TAG, "Observed Message $index: ${msg.text}")
+            }
             messageAdapter.updateMessages(messages)
             // Scroll to the bottom of the RecyclerView
             if (messages.isNotEmpty()) {

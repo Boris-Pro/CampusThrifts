@@ -24,7 +24,8 @@ class ChatViewModel : ViewModel() {
     }
 
     private fun fetchMessages() {
-        database.orderByKey().addListenerForSingleValueEvent(object : ValueEventListener {
+        Log.d("ChatViewModel", "Fetching messages from chat room ID: $chatRoomId")
+        database.orderByChild("timestamp").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val messagesList = mutableListOf<ChatMessage>()
                 for (childSnapshot in snapshot.children) {
@@ -34,7 +35,10 @@ class ChatViewModel : ViewModel() {
                     }
                 }
                 Log.d("ChatViewModel", "Fetched ${messagesList.size} messages")
-                _messages.postValue(messagesList)
+                messagesList.forEachIndexed { index, msg ->
+                    Log.d("ChatViewModel", "Message $index: ${msg.text}")
+                }
+                _messages.value = messagesList
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -44,20 +48,34 @@ class ChatViewModel : ViewModel() {
     }
 
     private fun listenForNewMessages() {
+        Log.d("ChatViewModel", "Listening for new messages in chat room ID: $chatRoomId")
         database.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                // Only add new messages that come after initial fetch
                 val message = snapshot.getValue(ChatMessage::class.java)
                 message?.let {
                     val currentList = _messages.value?.toMutableList() ?: mutableListOf()
-                    currentList.add(it)
-                    Log.d("ChatViewModel", "New message added: ${it.text}")
-                    _messages.postValue(currentList)
+                    // Check if message already exists to avoid duplicates
+                    if (!currentList.any { existing -> existing.id == it.id }) {
+                        currentList.add(it)
+                        Log.d("ChatViewModel", "New message added: ${it.text}")
+                        _messages.postValue(currentList)
+                    }
                 }
             }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {}
-            override fun onChildRemoved(snapshot: DataSnapshot) {}
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {}
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                Log.d("ChatViewModel", "Child changed: ${snapshot.key}")
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                Log.d("ChatViewModel", "Child removed: ${snapshot.key}")
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                Log.d("ChatViewModel", "Child moved: ${snapshot.key}, previousChildName: $previousChildName")
+            }
+
             override fun onCancelled(error: DatabaseError) {
                 Log.e("ChatViewModel", "Failed to listen for new messages: ${error.message}")
             }
@@ -74,6 +92,7 @@ class ChatViewModel : ViewModel() {
                 senderName = currentUser.displayName ?: "Anonymous",
                 timestamp = System.currentTimeMillis()
             )
+            Log.d("ChatViewModel", "Sending message: ${message.text}")
             database.push().setValue(message)
         }
     }

@@ -35,7 +35,9 @@
             android:id="@+id/sendButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/send_button" />
+            android:text="@string/send_button"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
