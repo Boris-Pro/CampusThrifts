@@ -1,183 +1,231 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    android:layout_height="match_parent">
 
-    <!-- Toolbar Section -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <!-- Main Content -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="Home">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <!-- Custom Toolbar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/home_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            app:title="Home"
+            app:titleTextColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/cart_icon"
+                android:id="@+id/hamburger_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home"
+
+                android:padding="8dp"
+                android:layout_gravity="start|center_vertical" />
+
+            <TextView
+                android:id="@+id/home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_title"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/home_cart_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_cart"
-                android:layout_alignParentEnd="true"
-                android:contentDescription="Cart Icon" />
+                android:contentDescription="@string/cart_icon_desc"
+                android:padding="8dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="56dp" />
 
             <ImageView
-                android:id="@+id/user_profile_icon"
+                android:id="@+id/home_profile_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_person"
-                android:layout_marginEnd="56dp"
-                android:layout_alignParentEnd="true"
-                android:contentDescription="User Profile Icon" />
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+                android:contentDescription="@string/profile_icon_desc"
+                android:padding="8dp"
+                android:layout_gravity="end|center_vertical" />
+        </androidx.appcompat.widget.Toolbar>
 
-    <!-- Scroll View Content Section -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize">
 
-        <LinearLayout
+        <!-- Scrollable Content -->
+        <ScrollView
+            android:id="@+id/home_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toBottomOf="@id/home_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-            <!-- Discover Section -->
-            <TextView
-                android:id="@+id/discover_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Discover"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
+            <!-- Single Child for ScrollView -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <EditText
-                    android:id="@+id/search_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="Search..."
-                    android:padding="12dp" />
-
-                <ImageView
-                    android:id="@+id/search_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_search"
-                    android:contentDescription="Search Icon"
-                    android:layout_gravity="center_vertical"
-                    android:padding="8dp" />
-            </LinearLayout>
-
-            <!-- New Collections Section -->
-            <TextView
-                android:id="@+id/new_collections_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New Collections"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewNewCollections"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:listitem="@layout/item_layout" />
-
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp">
-
-                <ImageView
-                    android:id="@+id/welcome_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/placeholderimage"
-                    android:contentDescription="Welcome Image" />
-
+                <!-- Discover Section -->
                 <TextView
-                    android:id="@+id/welcome_message"
+                    android:id="@+id/discover_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="WELCOME!"
-                    android:textSize="18sp"
+                    android:text="@string/discover_header"
                     android:textStyle="bold"
-                    android:layout_alignParentTop="true"
-                    android:layout_margin="16dp" />
+                    android:textSize="18sp"
+                    android:layout_marginBottom="8dp" />
 
+                <!-- New Collections Section -->
                 <TextView
-                    android:id="@+id/welcome_description"
+                    android:id="@+id/new_collections_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Get major discounts today!"
-                    android:layout_below="@id/welcome_message"
-                    android:layout_marginStart="16dp"
+                    android:text="@string/new_collections_header"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp" />
+
+                <!-- Banner with Welcome Text and Buy Now Button -->
+                <RelativeLayout
+                    android:id="@+id/welcome_banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <TextView
+                        android:id="@+id/welcome_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/welcome_text"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginStart="16dp" />
+
+                    <TextView
+                        android:id="@+id/discount_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/discount_text"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp"
+                        android:layout_below="@id/welcome_text"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="16dp" />
+
+                    <Button
+                        android:id="@+id/buy_now_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/buy_now"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="16dp" />
+
+                </RelativeLayout>
+
+                <!-- Popular This Week Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/popular_items_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popular_items_header"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_weight="1" />
+
+                    <!-- Arrow Icons Placeholder -->
+                    <ImageView
+                        android:id="@+id/popular_items_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/popular_items_arrow_desc"
+                        android:padding="8dp" />
+
+                </LinearLayout>
+
+                <!-- RecyclerView for Popular Items -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/popular_items_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp" />
 
-                <Button
-                    android:id="@+id/buy_now_button"
-                    android:layout_width="wrap_content"
+                <!-- Categories Section -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Buy Now"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="16dp"
-                    android:layout_centerHorizontal="true" />
-            </RelativeLayout>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical">
 
-            <!-- Popular This Week Section -->
-            <TextView
-                android:id="@+id/popular_this_week_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Popular This Week"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
+                    <TextView
+                        android:id="@+id/categories_header"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/categories_header"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_weight="1" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewPopularItems"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:listitem="@layout/item_layout" />
+                    <!-- Arrow Icons Placeholder -->
+                    <ImageView
+                        android:id="@+id/categories_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="@string/categories_arrow_desc"
+                        android:padding="8dp" />
 
-            <!-- Categories Section -->
-            <TextView
-                android:id="@+id/categories_header"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Categories"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
+                    <!-- "All" Button -->
+                    <Button
+                        android:id="@+id/all_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/all_button"
+                        android:layout_marginStart="8dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewCategories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                tools:listitem="@layout/category_item_layout" />
+                </LinearLayout>
 
-        </LinearLayout>
-    </ScrollView>
+                <!-- RecyclerView for Categories -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/categories_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <!-- Items List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/items_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -18,10 +18,9 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:background="?attr/colorPrimary"
         android:theme="?attr/actionBarTheme"
-        app:title="Home"
+        app:title="@string/home_title"
         android:titleTextColor="@android:color/white"
         app:menu="@menu/toolbar_menu" />
-
 
     <!-- Banner for Discover Section -->
     <ImageView
@@ -31,6 +30,7 @@
         android:layout_margin="16dp"
         android:scaleType="centerCrop"
         android:src="@drawable/placeholderimage"
+        android:contentDescription="@string/banner_image_desc"
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Popular This Week"
+        android:text="@string/popular_this_week"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/banner_image"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="Categories"
+        android:text="@string/categories"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/popular_items_recyclerview"
         app:layout_constraintStart_toStartOf="parent" />
