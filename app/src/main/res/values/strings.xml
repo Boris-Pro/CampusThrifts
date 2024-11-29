@@ -44,6 +44,7 @@
     <string name="popular_items_arrow_desc">View more popular items</string>
     <string name="categories_header">Categories</string>
     <string name="categories_arrow_desc">View more categories</string>
+    <string name="item_image_desc">Image of the favorite item</string>
     <string name="all_button">All</string>
     <string name="title_add_item">Add Item</string>
     <string name="title_favorite_item">Favorites</string>

@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         recyclerViewCategories.adapter = categoryAdapter
 
         val recyclerViewItems = view.findViewById<RecyclerView>(R.id.items_recyclerview)
-        itemsAdapter = LandscapeItemAdapter(emptyList())
+        itemsAdapter = LandscapeItemAdapter(emptyList(), this::onProductClick)  // Adjusted to match expected constructor
         recyclerViewItems.layoutManager = LinearLayoutManager(requireContext())
         recyclerViewItems.adapter = itemsAdapter
 
@@ -215,6 +215,19 @@ class HomeFragment : Fragment() {
                 Toast.makeText(context, "Failed to update favorite", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    private fun onProductClick(item: Item) {
+        // Navigate to ProductDetailFragment
+        val fragment = ProductDetailFragment()
+        val bundle = Bundle()
+        bundle.putString("productId", item.id)  // Pass the product ID to the detail fragment
+        fragment.arguments = bundle
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     private fun navigateToFragment(fragment: Fragment) {

@@ -58,6 +58,7 @@ dependencies {
 
     // Google Sign In SDK
     implementation(libs.play.services.auth)
+    implementation ("com.google.android.gms:play-services-auth:20.4.1")
 
     // Other dependencies
     implementation(libs.androidx.core.ktx)
@@ -98,6 +99,7 @@ dependencies {
 
     // Serialization
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation ("com.squareup.picasso:picasso:2.71828")
 
     // RecyclerView
     implementation("androidx.recyclerview:recyclerview:1.3.2")

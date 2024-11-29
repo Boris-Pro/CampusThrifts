@@ -1,7 +1,6 @@
 package com.example.campusthrifts
 
 import android.Manifest
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -18,17 +17,18 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.example.campusthrifts.databinding.ActivityMainBinding
-import com.example.campusthrifts.fragments.AddItemFragment
-import com.example.campusthrifts.fragments.FavoriteFragment
+import com.example.campusthrifts.fragments.*
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
-import androidx.fragment.app.FragmentTransaction
-import com.google.firebase.auth.FirebaseUser
 import com.squareup.picasso.Picasso
+import com.google.firebase.database.FirebaseDatabase
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -36,15 +36,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var firebaseUser: FirebaseUser
     private lateinit var databaseReference: DatabaseReference
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
-        if (isGranted) {
-            Toast.makeText(this, "Notification Permission Granted", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "Notification Permission Denied", Toast.LENGTH_SHORT).show()
-        }
+        Toast.makeText(
+            this,
+            if (isGranted) "Notification Permission Granted" else "Notification Permission Denied",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (BuildConfig.DEBUG) {
             FirebaseDatabase.getInstance().useEmulator("10.0.2.2", 9000)
@@ -52,10 +54,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             FirebaseStorage.getInstance().useEmulator("10.0.2.2", 9199)
         }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        // Setup Toolbar
+        // Setup Toolbar and Navigation Drawer
         setSupportActionBar(binding.toolbar)
         val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.open_nav, R.string.close_nav)
         binding.drawerLayout.addDrawerListener(toggle)
@@ -65,8 +64,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setupNavigationHeader()
         setupBottomNavigation()
 
+        // Load the default fragment
         if (savedInstanceState == null) {
-            openFragment(HomeFragment())
+            navigateToFragment(HomeFragment(), "Home")
         }
 
         askNotificationPermission()
@@ -95,26 +95,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun setupBottomNavigation() {
         binding.bottomNavigation.background = null
         binding.bottomNavigation.setOnItemSelectedListener { item ->
-            val selectedFragment: Fragment? = when (item.itemId) {
-                R.id.bottom_home -> HomeFragment()
-                R.id.bottom_add_item -> AddItemFragment()
-                R.id.bottom_favorite_item -> FavoriteFragment()
+            when (item.itemId) {
+                R.id.bottom_home -> {
+                    navigateToFragment(HomeFragment(), "Home")
+                }
+                R.id.bottom_add_item -> {
+                    startActivity(Intent(this, AddProductActivity::class.java))  // Updated to navigate to AddProductActivity
+                }
+                R.id.bottom_favorite_item -> {
+                    navigateToFragment(FavoriteFragment(), "Favorites")
+                }
                 R.id.bottom_chat -> {
-                    startActivity(Intent(this, ChatActivity::class.java))
-                    openFragment(UserListFragment())
-                    return@setOnItemSelectedListener true
+                    navigateToFragment(ChatFragment(), "Chat")  // Updated to navigate to ChatFragment
                 }
-                else -> null
-            }
-
-            selectedFragment?.let {
-                val title = when (item.itemId) {
-                    R.id.bottom_home -> "Home"
-                    R.id.bottom_add_item -> "Add Item"
-                    R.id.bottom_favorite_item -> "Favorites"
-                    else -> "CampusThrifts"
-                }
-                navigateToFragment(it, title)
             }
             true
         }
@@ -131,14 +124,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun updateToolbarTitle(title: String) {
         supportActionBar?.title = title
         binding.toolbar.setTitleTextColor(ContextCompat.getColor(this, android.R.color.black))
-    }
-
-    private fun openFragment(fragment: Fragment) {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .addToBackStack(null)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -158,8 +143,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 .addValueEventListener(object : ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val imageUrl = snapshot.getValue(String::class.java)
-                        if (imageUrl != null) {
+                        if (!imageUrl.isNullOrEmpty()) {
                             Picasso.get().load(imageUrl).into(profileImageView)
+                        } else {
+                            profileImageView.setImageResource(R.drawable.ic_person) // Default image
                         }
                     }
 
@@ -170,14 +157,51 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    fun toggleFavorite(itemId: String) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId).child("favorites")
+
+        databaseRef.child(itemId).get().addOnSuccessListener { snapshot ->
+            if (snapshot.exists()) {
+                // Remove the item from favorites
+                databaseRef.child(itemId).removeValue().addOnSuccessListener {
+                    Toast.makeText(this, "Item removed from favorites", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to remove favorite", Toast.LENGTH_SHORT).show()
+                }
+            } else {
+                // Add the item to favorites
+                databaseRef.child(itemId).setValue(true).addOnSuccessListener {
+                    Toast.makeText(this, "Item added to favorites", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to add favorite", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_cart -> {
+                navigateToFragment(CartFragment(), "Cart")
+                true
+            }
+            R.id.action_profile -> {
+                navigateToFragment(ProfileFragment(), "Profile")
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_home -> openFragment(HomeFragment())
-            R.id.nav_profile -> openFragment(ProfileFragment())
-            R.id.nav_chat -> openFragment(UserListFragment())
-            R.id.nav_dashboard -> openFragment(DashboardFragment())
-            R.id.nav_settings -> openFragment(SettingsFragment())
-            R.id.nav_about -> openFragment(AboutFragment())
+            R.id.nav_home -> navigateToFragment(HomeFragment(), "Home")
+            R.id.nav_profile -> navigateToFragment(ProfileFragment(), "Profile")
+            R.id.nav_chat -> navigateToFragment(UserListFragment(), "Chat")
+            R.id.nav_dashboard -> navigateToFragment(DashboardFragment(), "Dashboard")
+            R.id.nav_settings -> navigateToFragment(SettingsFragment(), "Settings")
+            R.id.nav_about -> navigateToFragment(AboutFragment(), "About")
             R.id.nav_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 startActivity(Intent(this, LoginActivity::class.java))

@@ -10,8 +10,10 @@ import com.bumptech.glide.Glide
 import com.example.campusthrifts.models.Item
 import com.google.firebase.database.FirebaseDatabase
 
-
-class LandscapeItemAdapter(private var items: List<Item>) : RecyclerView.Adapter<LandscapeItemAdapter.ItemViewHolder>() {
+class LandscapeItemAdapter(
+    private var items: List<Item>,
+    private val onItemClick: (Item) -> Unit // Added click listener parameter
+) : RecyclerView.Adapter<LandscapeItemAdapter.ItemViewHolder>() {
 
     // Create a ViewHolder class to hold item views
     class ItemViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -36,7 +38,7 @@ class LandscapeItemAdapter(private var items: List<Item>) : RecyclerView.Adapter
         holder.itemPrice.text = holder.itemView.context.getString(R.string.item_price_placeholder, currentItem.price)
         holder.itemDescription.text = currentItem.description
 
-        // Use Glide to load the image from URL
+        //  Glide to load the image from URL
         Glide.with(holder.itemView.context)
             .load(currentItem.imageUrl)
             .placeholder(R.drawable.placeholderimage)
@@ -51,7 +53,7 @@ class LandscapeItemAdapter(private var items: List<Item>) : RecyclerView.Adapter
             notifyItemChanged(position)
 
             // Optionally, update the Firebase database for the favorite state
-            // Use the FirebaseDatabase instance to update popularity score
+            // FirebaseDatabase instance to update popularity score
             val database = FirebaseDatabase.getInstance()
             val productRef = database.getReference("products").child(currentItem.id)
             if (currentItem.isFavorited) {
@@ -59,6 +61,11 @@ class LandscapeItemAdapter(private var items: List<Item>) : RecyclerView.Adapter
             } else {
                 productRef.child("popularity_score").setValue(currentItem.popularityScore - 1)
             }
+        }
+
+        // Handle click event on the entire item view
+        holder.itemView.setOnClickListener {
+            onItemClick(currentItem) // Trigger the item click listener
         }
     }
 
